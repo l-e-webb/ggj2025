@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://0fa8se7eu66v"]
+[gd_scene load_steps=11 format=3 uid="uid://0fa8se7eu66v"]
 
 [ext_resource type="PackedScene" uid="uid://crqd4lxka1wnh" path="res://bubble_wand/BubbleWand.tscn" id="1_yoyv3"]
 [ext_resource type="PackedScene" uid="uid://do8lfintnp12a" path="res://level_utils/Boundary.tscn" id="2_j7b5e"]
@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://w5qv7nkyvnsf" path="res://sounds/pop.ogg" id="5_6s3eo"]
 [ext_resource type="Script" path="res://sounds/sound_fx.gd" id="6_myxcv"]
 [ext_resource type="Texture2D" uid="uid://bawdnr7bqbli4" path="res://level_utils/eveningbackground.png" id="7_f62nu"]
-[ext_resource type="PackedScene" uid="uid://blvfxi2lr4gft" path="res://SealPlayer/Player.tscn" id="8_jidye"]
+[ext_resource type="PackedScene" path="res://SealPlayer/Player.tscn" id="8_jidye"]
 [ext_resource type="PackedScene" uid="uid://n3mjbve1seup" path="res://level_utils/BubbleSources.tscn" id="8_t41t1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjrkm"]
@@ -62,7 +62,9 @@ z_index = -1
 position = Vector2(809, 445)
 scale = Vector2(0.843058, 0.843058)
 texture = ExtResource("7_f62nu")
+
 [node name="Player" parent="." instance=ExtResource("8_jidye")]
+
 [node name="BubbleSources" parent="." instance=ExtResource("8_t41t1")]
 position = Vector2(78, 714)
 scale = Vector2(0.204401, 0.199584)

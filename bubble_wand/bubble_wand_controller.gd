@@ -3,13 +3,15 @@ extends Node2D
 const PLAIN_BUBBLE = preload("res://bubbles/PlainBubble.tscn")
 const GUM_BUBBLE = preload("res://bubbles/GumBubble.tscn")
 
-var bubble = null
-var can_bubble = true
-var all_bubble_types = ["plain", "gum", "elevator"]
-var bubble_type_index:int = 0
-
 var wand_with_bubble = preload("res://bubble_wand/bubblewandwithbubble.png")
 var wand_empty = preload("res://bubble_wand/bubblewand.png")
+
+var bubble = null
+var can_bubble = true
+var all_bubble_types = ["plain", "gum"]
+var bubble_type_index:int = 0
+
+
 
 func _process(delta: float) -> void:
 	# movement
@@ -33,6 +35,7 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_released("bubble_switch"):
 		bubble_type_index = (bubble_type_index + 1) % all_bubble_types.size()
+		SignalBus.bubble_type_selected.emit(bubble_type_index)
 		print("switch bubble type: " + str(bubble_type_index))
 		
 			
