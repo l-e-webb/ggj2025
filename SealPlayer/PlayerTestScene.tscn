@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsiob7dbvjtjw"]
+
+[ext_resource type="PackedScene" uid="uid://blvfxi2lr4gft" path="res://SealPlayer/Player1.tscn" id="1_46k8e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hoekx"]
+size = Vector2(10, 10)
+
+[node name="PlayerTestScene" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(800, 800)
+scale = Vector2(160, 1)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_hoekx")
+
+[node name="Player1" parent="." instance=ExtResource("1_46k8e")]
+position = Vector2(114, 698)
