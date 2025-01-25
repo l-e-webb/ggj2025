@@ -5,7 +5,7 @@ const GUM_BUBBLE = preload("res://bubbles/GumBubble.tscn")
 
 var bubble = null
 var can_bubble = true
-var all_bubble_types = ["plain", "gum"]
+var all_bubble_types = ["plain", "gum", "elevator"]
 var bubble_type_index:int = 0
 
 var wand_with_bubble = preload("res://bubble_wand/bubblewandwithbubble.png")

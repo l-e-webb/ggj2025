@@ -23,10 +23,10 @@ func _physics_process(delta: float) -> void:
 			-Constants.GUM_BUBBLE_RISE_MAX_SPEED
 		)
 
-		condition = move_and_collide(velocity)
+		var collision = move_and_collide(velocity)
 		
-		#if condition.get_collider() != null:
-		#	on_collision(condition.get_collider())
+		if collision != null:
+			on_collision(collision.get_collider())
 
 func set_pop_timer():
 	get_tree().create_timer(
@@ -45,10 +45,7 @@ func boundary_collision():
 	
 func on_collision(body: Node2D):
 	print("gum bubble has collided")
-	if body.has_method("pop"):
-		print("collision occured with body that can pop()")
-		body.pop()
-	elif body.has_method("stick_to_bubble"):
+	if body.has_method("stick_to_bubble"):
 		var bubble_transform = get_tree().RemoteTransform2D.instantiate()
 		bubble_transform.set_remote_note(body.get_path())
 		body.stick_to_bubble()
