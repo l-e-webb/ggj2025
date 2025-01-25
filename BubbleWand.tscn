@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://crqd4lxka1wnh"]
+
+[ext_resource type="Script" path="res://bubble_wand_controller.gd" id="1_hw7vu"]
+
+[sub_resource type="Gradient" id="Gradient_gsfmi"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s45b1"]
+gradient = SubResource("Gradient_gsfmi")
+
+[node name="BubbleWand" type="Node2D"]
+script = ExtResource("1_hw7vu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_s45b1")
