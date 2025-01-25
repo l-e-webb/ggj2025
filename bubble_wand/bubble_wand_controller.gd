@@ -1,6 +1,7 @@
 extends Node2D
 
 const PLAIN_BUBBLE = preload("res://bubbles/PlainBubble.tscn")
+const GUM_BUBBLE = preload("res://bubbles/GumBubble.tscn")
 
 var bubble = null
 var can_bubble = true
@@ -32,7 +33,7 @@ func _input(event: InputEvent) -> void:
 func blow_bubble():
 	print("blow_bubble says: " + str(can_bubble))
 	if can_bubble:
-		bubble = PLAIN_BUBBLE.instantiate()
+		bubble = GUM_BUBBLE.instantiate()
 		add_child(bubble)
 		bubble.scale = Vector2(1, 1) * Constants.BUBBLE_MIN_SCALE
 	

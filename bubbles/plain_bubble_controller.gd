@@ -42,7 +42,9 @@ func set_pop_timer():
 func pop():
 	SignalBus.bubble_pop.emit(global_position)
 	queue_free()
+	print("plain bubble has popped")
 
 func boundary_collision():
 	pop()
+
 	

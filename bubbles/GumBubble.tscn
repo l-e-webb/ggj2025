@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgbrthyvkkwb2"]
+
+[ext_resource type="Script" path="res://bubbles/plain_bubble_controller.gd" id="1_2ynyr"]
+[ext_resource type="Texture2D" uid="uid://yirby4u8fwtb" path="res://bubbles/gum_bubble_sprite.png" id="2_5mluo"]
+
+[node name="GumBubble" type="AnimatableBody2D"]
+collision_layer = 2
+collision_mask = 11
+sync_to_physics = false
+script = ExtResource("1_2ynyr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(75, 0, 50, 50, -50, 50, -75, 0, -50, -50, 50, -50)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_5mluo")
