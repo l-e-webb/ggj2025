@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://swjqpcnlko3p"]
+
+[ext_resource type="PackedScene" uid="uid://x0jbcni3c8am" path="res://bubbles/PlainBubble.tscn" id="1_igflc"]
+
+[node name="BubbleTestScene" type="Node2D"]
+
+[node name="PlainBubble" parent="." instance=ExtResource("1_igflc")]
+position = Vector2(225, 361)
+slide_on_ceiling = false
