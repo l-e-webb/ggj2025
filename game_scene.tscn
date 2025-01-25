@@ -1,22 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu66mrdb4hdw8"]
+[gd_scene load_steps=4 format=3 uid="uid://0fa8se7eu66v"]
 
-[ext_resource type="PackedScene" uid="uid://crqd4lxka1wnh" path="res://BubbleWand.tscn" id="1_yoyv3"]
-[ext_resource type="Script" path="res://upper_bound_controller.gd" id="2_ih227"]
+[ext_resource type="PackedScene" path="res://BubbleWand.tscn" id="1_yoyv3"]
+[ext_resource type="PackedScene" uid="uid://do8lfintnp12a" path="res://Boundary.tscn" id="2_j7b5e"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iafdc"]
-size = Vector2(1151, 54)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjrkm"]
+size = Vector2(24, 999)
 
-[node name="Node2D" type="Node2D"]
+[node name="GameScene" type="Node2D"]
 
 [node name="BubbleWand" parent="." instance=ExtResource("1_yoyv3")]
-position = Vector2(120, 611)
+position = Vector2(34, 860)
 
-[node name="UpperBound" type="Area2D" parent="."]
-position = Vector2(522, 8)
-collision_layer = 8
-collision_mask = 15
-script = ExtResource("2_ih227")
+[node name="UpperBound" parent="." instance=ExtResource("2_j7b5e")]
+position = Vector2(800, -108)
+scale = Vector2(40, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperBound"]
-position = Vector2(53.5, 17)
-shape = SubResource("RectangleShape2D_iafdc")
+[node name="LowerBound" parent="." instance=ExtResource("2_j7b5e")]
+position = Vector2(800, 955)
+scale = Vector2(40, 1)
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(-15, 0)
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(-2, 423.5)
+shape = SubResource("RectangleShape2D_cjrkm")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(1622, 0)
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(-2, 423.5)
+shape = SubResource("RectangleShape2D_cjrkm")
