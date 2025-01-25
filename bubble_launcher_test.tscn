@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://do17pdxk27w10"]
+
+[ext_resource type="PackedScene" uid="uid://crqd4lxka1wnh" path="res://BubbleWand.tscn" id="1_unpb0"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BubbleWand" parent="." instance=ExtResource("1_unpb0")]
+position = Vector2(31, 614)
