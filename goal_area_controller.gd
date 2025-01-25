@@ -5,3 +5,4 @@ func _ready() -> void:
 
 func on_player_enter(_body: Node2D):
 	print("You win!")
+	SignalBus.player_win.emit()
