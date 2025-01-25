@@ -43,7 +43,6 @@ func release_bubble():
 	
 	get_tree().root.add_child(bubble)
 	bubble.global_position = bubble_global_pos
-	
 	bubble = null
 	
 
