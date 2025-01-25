@@ -21,7 +21,16 @@ func _physics_process(delta: float) -> void:
 			-Constants.PLAIN_BUBBLE_RISE_MAX_SPEED
 		)
 
-		move_and_collide(velocity)
+		var collision = move_and_collide(velocity)
+		if collision != null:
+			# If we've collided with something such as the player, push it along
+			# by moving it the remainder of the desired motion
+			var body = collision.get_collider()
+			if body.has_method("move_and_collide"):
+				body.move_and_collide(collision.get_remainder())
+			move_and_collide(collision.get_remainder())
+	
+	constant_linear_velocity = velocity
 
 func set_pop_timer():
 	get_tree().create_timer(
