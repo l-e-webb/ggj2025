@@ -14,7 +14,7 @@ size = Vector2(24, 999)
 [node name="GameScene" type="Node2D"]
 
 [node name="BubbleWand" parent="." instance=ExtResource("1_yoyv3")]
-position = Vector2(34, 860)
+position = Vector2(238, 773)
 
 [node name="UpperBound" parent="." instance=ExtResource("2_j7b5e")]
 position = Vector2(800, -110)

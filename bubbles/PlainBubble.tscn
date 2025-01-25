@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://x0jbcni3c8am"]
+[gd_scene load_steps=3 format=3 uid="uid://x0jbcni3c8am"]
 
 [ext_resource type="Script" path="res://bubbles/plain_bubble_controller.gd" id="1_1m23h"]
+[ext_resource type="Texture2D" uid="uid://erxqfwijebar" path="res://bubbles/vanillabubblevector.png" id="2_e5k37"]
 
 [node name="PlainBubble" type="AnimatableBody2D"]
 collision_layer = 2
@@ -10,3 +11,7 @@ script = ExtResource("1_1m23h")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(75, 0, 50, 50, -50, 50, -75, 0, -50, -50, 50, -50)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_e5k37")
