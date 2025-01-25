@@ -6,4 +6,3 @@
 
 [node name="BubbleWand" parent="." instance=ExtResource("1_pi046")]
 position = Vector2(31, 614)
-scale_factor = 0.5

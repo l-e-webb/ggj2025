@@ -31,6 +31,6 @@ func set_pop_timer():
 	).timeout.connect(queue_free)
 		
 func boundary_collision():
+	SignalBus.bubble_pop.emit(global_position)
 	queue_free()
-	
 	
