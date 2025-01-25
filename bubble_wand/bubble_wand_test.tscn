@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://do17pdxk27w10"]
 
-[ext_resource type="PackedScene" uid="uid://crqd4lxka1wnh" path="res://BubbleWand.tscn" id="1_pi046"]
+[ext_resource type="PackedScene" uid="uid://crqd4lxka1wnh" path="res://bubble_wand/BubbleWand.tscn" id="1_pi046"]
 
 [node name="Node2D" type="Node2D"]
 

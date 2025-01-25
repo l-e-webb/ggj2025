@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://mwiibtpew6qp"]
 
-[ext_resource type="Script" path="res://start_location_controller.gd" id="1_bprxy"]
-[ext_resource type="PackedScene" uid="uid://dpd6rfck5w6nq" path="res://GoalArea2D.tscn" id="2_yeuhk"]
+[ext_resource type="Script" path="res://level_utils/start_location_controller.gd" id="1_bprxy"]
+[ext_resource type="PackedScene" uid="uid://dpd6rfck5w6nq" path="res://level_utils/GoalArea2D.tscn" id="2_yeuhk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16cs5"]
 size = Vector2(198, 20)

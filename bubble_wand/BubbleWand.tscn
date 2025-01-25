@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://crqd4lxka1wnh"]
 
-[ext_resource type="Script" path="res://bubble_wand_controller.gd" id="1_hw7vu"]
+[ext_resource type="Script" path="res://bubble_wand/bubble_wand_controller.gd" id="1_hw7vu"]
 
 [sub_resource type="Gradient" id="Gradient_gsfmi"]
 
