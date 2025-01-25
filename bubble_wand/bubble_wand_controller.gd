@@ -5,6 +5,9 @@ const PLAIN_BUBBLE = preload("res://bubbles/PlainBubble.tscn")
 var bubble = null
 var can_bubble = true
 
+var wand_with_bubble = preload("res://bubble_wand/bubblewandwithbubble.png")
+var wand_empty = preload("res://bubble_wand/bubblewand.png")
+
 func _process(delta: float) -> void:
 	# movement
 	var mouse_x = get_viewport().get_mouse_position().x
@@ -37,7 +40,7 @@ func blow_bubble():
 func release_bubble():
 	bubble.is_floating = true
 	var bubble_global_pos = bubble.global_position
-	$Sprite2D.set_texture(load("res://bubble_wand/bubblewand.png"))
+	$Sprite2D.set_texture(wand_empty)
 	remove_child(bubble)
 	
 	can_bubble = false
@@ -58,7 +61,7 @@ func cooldown():
 	
 	
 func reload():
-	$Sprite2D.set_texture(load("res://bubble_wand/bubblewandwithbubble.png"))
+	$Sprite2D.set_texture(wand_with_bubble)
 	can_bubble = true
 	print("reload: " + str(can_bubble))
 	
