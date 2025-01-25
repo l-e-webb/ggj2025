@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://do8lfintnp12a"]
 
-[ext_resource type="Script" path="res://boundary_controller.gd" id="1_1y30k"]
+[ext_resource type="Script" path="res://level_utils/boundary_controller.gd" id="1_1y30k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iafdc"]
 size = Vector2(50, 50)

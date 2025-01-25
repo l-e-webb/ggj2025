@@ -1,17 +1,16 @@
 extends Node2D
 
-
-var bubble_radius = 0.1
-var bubble = null
 const PLAIN_BUBBLE = preload("res://bubbles/PlainBubble.tscn")
-@export var scale_factor = 0.5
 
-# movement
+var bubble = null
+
 func _process(delta: float) -> void:
+	# movement
 	var mouse_x = get_viewport().get_mouse_position().x
 	position.x = mouse_x
+	
 	if bubble != null and bubble.scale.x < Constants.MAX_BUBBLE_SCALE:
-		bubble.scale += delta * scale_factor * Vector2(1, 1)
+		bubble.scale += delta * Constants.BUBBLE_SCALE_SPEED_FACTOR * Vector2(1, 1)
 	
 
 # on click create bubble/on release finalize bubble
@@ -29,7 +28,7 @@ func _input(event: InputEvent) -> void:
 func blow_bubble():
 	bubble = PLAIN_BUBBLE.instantiate()
 	add_child(bubble)
-	bubble.scale = Vector2(0.1, 0.1)
+	bubble.scale = Vector2(1, 1) * Constants.BUBBLE_MIN_SCALE
 	
 	
 func release_bubble():
