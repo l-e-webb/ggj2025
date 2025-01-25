@@ -1,34 +1,25 @@
 [gd_scene load_steps=5 format=3 uid="uid://mwiibtpew6qp"]
 
 [ext_resource type="Script" path="res://level_utils/start_location_controller.gd" id="1_bprxy"]
+[ext_resource type="PackedScene" uid="uid://bdpbfvmltxok5" path="res://level_utils/platform_1.tscn" id="1_fcu74"]
 [ext_resource type="PackedScene" uid="uid://dpd6rfck5w6nq" path="res://level_utils/GoalArea2D.tscn" id="2_yeuhk"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_16cs5"]
-size = Vector2(198, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_22da4"]
-size = Vector2(234, 20)
+[ext_resource type="PackedScene" uid="uid://r56umgnv64hf" path="res://level_utils/platform_2.tscn" id="3_25u6o"]
 
 [node name="EmptyLevel" type="Node2D"]
 
-[node name="StartPlatform" type="StaticBody2D" parent="."]
-position = Vector2(56, 662)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StartPlatform"]
-position = Vector2(51, 0)
-shape = SubResource("RectangleShape2D_16cs5")
+[node name="StartPlatform" parent="." instance=ExtResource("1_fcu74")]
+position = Vector2(127, 659)
+scale = Vector2(0.451272, 0.451272)
 
 [node name="StartLocation" type="Marker2D" parent="StartPlatform"]
-position = Vector2(46, -94)
+position = Vector2(-57.6149, -203.868)
+scale = Vector2(2.21596, 2.21596)
 script = ExtResource("1_bprxy")
 
-[node name="GoalPlatform" type="StaticBody2D" parent="."]
-position = Vector2(1490, 677)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalPlatform"]
-position = Vector2(-14, 0)
-shape = SubResource("RectangleShape2D_22da4")
+[node name="GoalPlatform" parent="." instance=ExtResource("3_25u6o")]
+position = Vector2(1459, 695)
+scale = Vector2(0.201219, 0.201219)
 
 [node name="GoalArea2D" parent="GoalPlatform" instance=ExtResource("2_yeuhk")]
-position = Vector2(-14, -93)
-scale = Vector2(22.7657, 16.1382)
+position = Vector2(84.4854, -556.609)
+scale = Vector2(113.139, 80.2024)
