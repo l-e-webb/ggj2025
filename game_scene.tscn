@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://0fa8se7eu66v"]
+[gd_scene load_steps=8 format=3 uid="uid://0fa8se7eu66v"]
 
 [ext_resource type="PackedScene" uid="uid://crqd4lxka1wnh" path="res://BubbleWand.tscn" id="1_yoyv3"]
-[ext_resource type="PackedScene" uid="uid://do8lfintnp12a" path="res://Boundary.tscn" id="2_j7b5e"]
+[ext_resource type="PackedScene" path="res://Boundary.tscn" id="2_j7b5e"]
+[ext_resource type="AudioStream" uid="uid://bqriext1dreca" path="res://sounds/Slow Stride Loop.ogg" id="3_gse3f"]
 [ext_resource type="PackedScene" uid="uid://mwiibtpew6qp" path="res://levels/EmptyLevel.tscn" id="3_l4rf8"]
-[ext_resource type="AudioStream" uid="uid://bqriext1dreca" path="res://Slow Stride Loop.ogg" id="3_gse3f"]
-
+[ext_resource type="AudioStream" uid="uid://w5qv7nkyvnsf" path="res://sounds/pop.ogg" id="5_6s3eo"]
+[ext_resource type="Script" path="res://sounds/sound_fx.gd" id="6_myxcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjrkm"]
 size = Vector2(24, 999)
@@ -15,7 +16,7 @@ size = Vector2(24, 999)
 position = Vector2(34, 860)
 
 [node name="UpperBound" parent="." instance=ExtResource("2_j7b5e")]
-position = Vector2(800, -108)
+position = Vector2(800, -110)
 scale = Vector2(40, 1)
 
 [node name="LowerBound" parent="." instance=ExtResource("2_j7b5e")]
@@ -48,4 +49,6 @@ bus = &"Music"
 parameters/looping = true
 
 [node name="SoundFX" type="AudioStreamPlayer2D" parent="."]
-
+stream = ExtResource("5_6s3eo")
+bus = &"FX"
+script = ExtResource("6_myxcv")
