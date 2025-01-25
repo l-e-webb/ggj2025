@@ -34,3 +34,4 @@ func boundary_collision():
 	queue_free()
 	
 	
+	
