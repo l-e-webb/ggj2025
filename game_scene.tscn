@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu66mrdb4hdw8"]
+
+[ext_resource type="PackedScene" uid="uid://crqd4lxka1wnh" path="res://BubbleWand.tscn" id="1_yoyv3"]
+[ext_resource type="Script" path="res://upper_bound_controller.gd" id="2_ih227"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iafdc"]
+size = Vector2(1151, 54)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BubbleWand" parent="." instance=ExtResource("1_yoyv3")]
+position = Vector2(120, 611)
+
+[node name="UpperBound" type="Area2D" parent="."]
+position = Vector2(522, 8)
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("2_ih227")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperBound"]
+position = Vector2(53.5, 17)
+shape = SubResource("RectangleShape2D_iafdc")
