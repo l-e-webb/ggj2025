@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://x0jbcni3c8am"]
+[gd_scene load_steps=2 format=3 uid="uid://x0jbcni3c8am"]
 
 [ext_resource type="Script" path="res://bubbles/plain_bubble_controller.gd" id="1_1m23h"]
-[ext_resource type="AudioStream" uid="uid://w5qv7nkyvnsf" path="res://bubbles/pop.ogg" id="2_xwpa5"]
 
 [node name="PlainBubble" type="AnimatableBody2D"]
 collision_layer = 2
@@ -11,7 +10,3 @@ script = ExtResource("1_1m23h")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(75, 0, 50, 50, -50, 50, -75, 0, -50, -50, 50, -50)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_xwpa5")
-bus = &"FX"

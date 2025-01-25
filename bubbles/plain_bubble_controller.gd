@@ -33,5 +33,3 @@ func set_pop_timer():
 func boundary_collision():
 	queue_free()
 	
-	
-	
