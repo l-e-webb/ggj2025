@@ -55,3 +55,6 @@ func handle_horizontal_motion():
 
 func _on_set_player_position(pos: Vector2):
 	global_position = pos
+
+func boundary_collision():
+	SignalBus.send_player_to_start.emit()

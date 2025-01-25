@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsiob7dbvjtjw"]
 
-[ext_resource type="PackedScene" uid="uid://blvfxi2lr4gft" path="res://SealPlayer/Player1.tscn" id="1_46k8e"]
+[ext_resource type="PackedScene" uid="uid://blvfxi2lr4gft" path="res://SealPlayer/Player.tscn" id="1_46k8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hoekx"]
 size = Vector2(10, 10)
@@ -15,5 +15,5 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("RectangleShape2D_hoekx")
 
-[node name="Player1" parent="." instance=ExtResource("1_46k8e")]
-position = Vector2(114, 698)
+[node name="Player" parent="." instance=ExtResource("1_46k8e")]
+position = Vector2(139, 663)
