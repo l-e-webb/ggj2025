@@ -1,36 +1,44 @@
 extends AnimatableBody2D
 
-var velocity: Vector2 = Vector2(0,0)
-var t: float = 0
-var is_floating = false
-var is_pop_timer_set = false
-
-func _physics_process(delta: float) -> void:
-	if is_floating:
-		if not is_pop_timer_set:
-			set_pop_timer()
-		
-		var freq = Constants.PLAIN_BUBBLE_DRIFT_FREQUENCY
-		var amp = Constants.PLAIN_BUBBLE_DRIFT_AMPLITUDE
-		t += delta
-		t = fmod(t, TAU/freq)
-		velocity.x = cos(t * freq) * amp
-		
-		velocity.y = maxf(
-			velocity.y - Constants.PLAIN_BUBBLE_RISE_ACCEL * delta,
-			-Constants.PLAIN_BUBBLE_RISE_MAX_SPEED
-		)
-
-		var collision = move_and_collide(velocity)
-		if collision != null:
-			# If we've collided with something such as the player, push it along
-			# by moving it the remainder of the desired motion
-			var body = collision.get_collider()
-			if body.has_method("move_and_collide"):
-				body.move_and_collide(collision.get_remainder())
-			move_and_collide(collision.get_remainder())
+func begin_floating():
+	set_pop_timer()
 	
-	constant_linear_velocity = velocity
+	var rise_tween = get_tree().create_tween()
+	rise_tween.bind_node(self)
+	rise_tween.set_trans(Constants.PLAIN_BUBBLE_RISE_TRANS)
+	rise_tween.set_ease(Constants.PLAIN_BUBBLE_RISE_EASE)
+	rise_tween.tween_method(
+		set_y,
+		position.y,
+		Constants.PLAIN_BUBBLE_RISE_TARGET,
+		Constants.PLAIN_BUBBLE_RISE_DURATION
+	)
+	
+	var left = position.x
+	var right = left + Constants.PLAIN_BUBBLE_DRIFT_OFFSET
+	var drift_tween = get_tree().create_tween()
+	drift_tween.bind_node(self)
+	drift_tween.set_trans(Constants.PLAIN_BUBBLE_DRIFT_TRANS)
+	drift_tween.set_ease(Constants.PLAIN_BUBBLE_DRIFT_EASE)
+	drift_tween.set_loops()
+	drift_tween.tween_method(
+		set_x,
+		left,
+		right,
+		Constants.PLAIN_BUBBLE_DRIFT_DURATION
+	)
+	drift_tween.tween_method(
+		set_x,
+		right,
+		left,
+		Constants.PLAIN_BUBBLE_DRIFT_DURATION
+	)
+
+func set_x(x: float):
+	position.x = x
+
+func set_y(y: float):
+	position.y = y
 
 func set_pop_timer():
 	get_tree().create_timer(

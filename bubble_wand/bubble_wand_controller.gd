@@ -38,7 +38,6 @@ func blow_bubble():
 	
 	
 func release_bubble():
-	bubble.is_floating = true
 	var bubble_global_pos = bubble.global_position
 	$Sprite2D.set_texture(wand_empty)
 	remove_child(bubble)
@@ -49,6 +48,7 @@ func release_bubble():
 	
 	get_tree().root.add_child(bubble)
 	bubble.global_position = bubble_global_pos
+	bubble.begin_floating()
 	bubble = null
 	
 func cooldown():
