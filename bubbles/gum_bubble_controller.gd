@@ -1,32 +1,52 @@
 extends AnimatableBody2D
 
-var velocity: Vector2 = Vector2(0,0)
-var t: float = 0
-var is_floating = false
-var is_pop_timer_set = false
+func _ready() -> void:
+	# handle collisions with player
+	$Area2D.body_entered.connect(on_bubble_stick)
+	$Area2D.body_exited.connect(on_bubble_unstick)
 
-var condition
+func begin_floating():
+	set_pop_timer()
+	
+	var rise_tween = get_tree().create_tween()
+	rise_tween.bind_node(self)
+	rise_tween.set_trans(Constants.GUM_BUBBLE_RISE_TRANS)
+	rise_tween.set_ease(Constants.GUM_BUBBLE_RISE_EASE)
+	rise_tween.tween_method(
+		set_y,
+		position.y,
+		Constants.GUM_BUBBLE_RISE_TARGET,
+		Constants.GUM_BUBBLE_RISE_DURATION
+	)
+	
+	var left = position.x
+	var right = left + Constants.GUM_BUBBLE_DRIFT_OFFSET
+	var drift_tween = get_tree().create_tween()
+	drift_tween.bind_node(self)
+	drift_tween.set_trans(Constants.GUM_BUBBLE_DRIFT_TRANS)
+	drift_tween.set_ease(Constants.GUM_BUBBLE_DRIFT_EASE)
+	drift_tween.set_loops()
+	drift_tween.tween_method(
+		set_x,
+		left,
+		right,
+		Constants.GUM_BUBBLE_DRIFT_DURATION
+	)
+	drift_tween.tween_method(
+		set_x,
+		right,
+		left,
+		Constants.GUM_BUBBLE_DRIFT_DURATION
+	)
+	
+	# handle collisions with player
+	#$Area2D.body_entered.connect(on_bubble_stick)
 
-func _physics_process(delta: float) -> void:
-	if is_floating:
-		if not is_pop_timer_set:
-			set_pop_timer()
-		
-		var freq = Constants.GUM_BUBBLE_DRIFT_FREQUENCY
-		var amp = Constants.GUM_BUBBLE_DRIFT_AMPLITUDE
-		t += delta
-		t = fmod(t, TAU/freq)
-		velocity.x = cos(t * freq) * amp
-		
-		velocity.y = maxf(
-			velocity.y - Constants.GUM_BUBBLE_RISE_ACCEL * delta,
-			-Constants.GUM_BUBBLE_RISE_MAX_SPEED
-		)
+func set_x(x: float):
+	position.x = x
 
-		var collision = move_and_collide(velocity)
-		
-		if collision != null:
-			on_collision(collision.get_collider())
+func set_y(y: float):
+	position.y = y
 
 func set_pop_timer():
 	get_tree().create_timer(
@@ -37,11 +57,23 @@ func set_pop_timer():
 
 func pop():
 	SignalBus.bubble_pop.emit(global_position)
+	for child in get_children():
+		if child.has_method("jump_off_bubble"):
+			child.jump_off_bubble()
 	queue_free()
+	print("gum bubble has popped")
 
 func boundary_collision():
 	pop()
+
+func on_bubble_stick(body: Node2D):
+	print("bubble is sticking")
+	if body.has_method("stick_to_bubble"):
+		body.stick_to_bubble(self)
 	
+	
+func on_bubble_unstick(body: Node2D):
+	print("body has exited")
 	
 func on_collision(body: Node2D):
 	print("gum bubble has collided")

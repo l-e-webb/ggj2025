@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://w5qv7nkyvnsf" path="res://sounds/pop.ogg" id="5_6s3eo"]
 [ext_resource type="Script" path="res://sounds/sound_fx.gd" id="6_myxcv"]
 [ext_resource type="Texture2D" uid="uid://bawdnr7bqbli4" path="res://level_utils/eveningbackground.png" id="7_f62nu"]
-[ext_resource type="PackedScene" path="res://SealPlayer/Player.tscn" id="8_jidye"]
+[ext_resource type="PackedScene" uid="uid://bsbdnfuopa0p0" path="res://SealPlayer/Player.tscn" id="8_jidye"]
 [ext_resource type="PackedScene" uid="uid://n3mjbve1seup" path="res://level_utils/BubbleSources.tscn" id="8_t41t1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjrkm"]

@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgbrthyvkkwb2"]
+[gd_scene load_steps=4 format=3 uid="uid://bgbrthyvkkwb2"]
 
-[ext_resource type="Script" path="res://bubbles/plain_bubble_controller.gd" id="1_2ynyr"]
+[ext_resource type="Script" path="res://bubbles/gum_bubble_controller.gd" id="1_e3ih1"]
 [ext_resource type="Texture2D" uid="uid://yirby4u8fwtb" path="res://bubbles/gum_bubble_sprite.png" id="2_5mluo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0le0t"]
+radius = 93.1933
 
 [node name="GumBubble" type="AnimatableBody2D"]
 collision_layer = 2
 collision_mask = 11
 sync_to_physics = false
-script = ExtResource("1_2ynyr")
+script = ExtResource("1_e3ih1")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(75, 0, 50, 50, -50, 50, -75, 0, -50, -50, 50, -50)
@@ -15,3 +18,9 @@ polygon = PackedVector2Array(75, 0, 50, 50, -50, 50, -75, 0, -50, -50, 50, -50)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_5mluo")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0le0t")
