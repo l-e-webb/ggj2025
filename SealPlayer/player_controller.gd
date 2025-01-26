@@ -141,7 +141,7 @@ func jump_off_bubble():
 	global_scale = size
 	
 	# actually jump
-    SignalBus.seal_jump.emit()
+	SignalBus.seal_jump.emit()
 	if self.global_position.y <= gum_bubble.global_position.y + 50:
 		velocity.y = -Constants.PLAYER_FLOOR_JUMP_VELOCITY
 	else:
