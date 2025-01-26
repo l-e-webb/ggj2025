@@ -18,8 +18,6 @@ func _process(delta: float):
 		desired_animation = StringName("Idle")
 	else:
 		desired_animation = StringName("Jump")
-		
-	print(desired_animation)
 			
 	if velocity.x < 0:
 		$AnimatedSprite2D.flip_h = true

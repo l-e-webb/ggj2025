@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://level_utils/start_location_controller.gd" id="1_bprxy"]
 [ext_resource type="PackedScene" uid="uid://bdpbfvmltxok5" path="res://level_utils/platform_1.tscn" id="1_fcu74"]
-[ext_resource type="PackedScene" uid="uid://dpd6rfck5w6nq" path="res://level_utils/GoalArea2D.tscn" id="2_yeuhk"]
+[ext_resource type="PackedScene" uid="uid://dpd6rfck5w6nq" path="res://level_utils/goal/GoalArea2D.tscn" id="2_yeuhk"]
 [ext_resource type="PackedScene" uid="uid://r56umgnv64hf" path="res://level_utils/platform_2.tscn" id="3_25u6o"]
 
 [node name="EmptyLevel" type="Node2D"]
@@ -17,7 +17,7 @@ scale = Vector2(2.21596, 2.21596)
 script = ExtResource("1_bprxy")
 
 [node name="GoalPlatform" parent="." instance=ExtResource("3_25u6o")]
-position = Vector2(1459, 695)
+position = Vector2(1456, 355)
 scale = Vector2(0.201219, 0.201219)
 
 [node name="GoalArea2D" parent="GoalPlatform" instance=ExtResource("2_yeuhk")]

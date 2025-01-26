@@ -8,9 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://vtc6tak6o367" path="res://SealPlayer/SealWalk0009.png" id="6_j48j5"]
 [ext_resource type="Texture2D" uid="uid://bu31eei7fg8ek" path="res://SealPlayer/SealWalk0011.png" id="7_wlues"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hf4ji"]
-radius = 19.0
-height = 38.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8atd8"]
+size = Vector2(31.1688, 29)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cvq05"]
 animations = [{
@@ -63,8 +62,9 @@ platform_floor_layers = 4294901766
 script = ExtResource("1_at7ki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -4.5)
 scale = Vector2(3.08, 1)
-shape = SubResource("CapsuleShape2D_hf4ji")
+shape = SubResource("RectangleShape2D_8atd8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -18)

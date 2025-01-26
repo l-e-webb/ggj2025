@@ -3,7 +3,7 @@ class_name Constants extends Node
 const MAX_BUBBLE_SCALE = 0.9999
 const MAX_BUBBLE_DURATION = 25.
 const BUBBLE_SCALE_SPEED_FACTOR = 0.5
-const BUBBLE_MIN_SCALE = 0.2
+const BUBBLE_MIN_SCALE = 0.5
 
 const PLAIN_BUBBLE_RISE_TRANS = Tween.TRANS_SINE
 const PLAIN_BUBBLE_RISE_EASE = Tween.EASE_IN
