@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://n3mjbve1seup"]
+
+[ext_resource type="Script" path="res://level_utils/bubble_source_controller.gd" id="1_8x7ji"]
+[ext_resource type="Texture2D" uid="uid://bm7m01n1bsqpx" path="res://level_utils/plain_bubble_source.png" id="1_nlu6l"]
+[ext_resource type="Texture2D" uid="uid://dnrj8gok7wqse" path="res://level_utils/gum_bubble_source.png" id="2_jiivy"]
+[ext_resource type="Texture2D" uid="uid://cv0oytu4i7fbl" path="res://level_utils/elevator_bubble_source.png" id="3_t8she"]
+
+[node name="BubbleSources" type="Node2D"]
+scale = Vector2(0.314597, 0.307184)
+script = ExtResource("1_8x7ji")
+
+[node name="Plain" type="Sprite2D" parent="."]
+texture = ExtResource("1_nlu6l")
+
+[node name="Gum" type="Sprite2D" parent="."]
+position = Vector2(0, 348.043)
+texture = ExtResource("2_jiivy")
+
+[node name="Elevator" type="Sprite2D" parent="."]
+position = Vector2(0, 723.845)
+texture = ExtResource("3_t8she")

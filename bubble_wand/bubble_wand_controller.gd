@@ -1,12 +1,17 @@
 extends Node2D
 
 const PLAIN_BUBBLE = preload("res://bubbles/PlainBubble.tscn")
-
-var bubble = null
-var can_bubble = true
+const GUM_BUBBLE = preload("res://bubbles/GumBubble.tscn")
 
 var wand_with_bubble = preload("res://bubble_wand/bubblewandwithbubble.png")
 var wand_empty = preload("res://bubble_wand/bubblewand.png")
+
+var bubble = null
+var can_bubble = true
+var all_bubble_types = ["plain", "gum"]
+var bubble_type_index:int = 0
+
+
 
 func _process(delta: float) -> void:
 	# movement
@@ -20,19 +25,28 @@ func _process(delta: float) -> void:
 # on click create bubble/on release finalize bubble
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("bubble_start"):
-		blow_bubble()
+		blow_bubble(bubble_type_index)
 	if event.is_action_released("bubble_start"):
 		if bubble != null:
 			release_bubble()
 			print("bubble released")
 		else:
 			print("no bubble")
+	
+	if event.is_action_released("bubble_switch"):
+		bubble_type_index = (bubble_type_index + 1) % all_bubble_types.size()
+		SignalBus.bubble_type_selected.emit(bubble_type_index)
+		print("switch bubble type: " + str(bubble_type_index))
+		
 			
 		
-func blow_bubble():
+func blow_bubble(index: int):
 	print("blow_bubble says: " + str(can_bubble))
 	if can_bubble:
-		bubble = PLAIN_BUBBLE.instantiate()
+		if index == 1:
+			bubble = GUM_BUBBLE.instantiate()
+		else:
+			bubble = PLAIN_BUBBLE.instantiate()
 		add_child(bubble)
 		bubble.scale = Vector2(1, 1) * Constants.BUBBLE_MIN_SCALE
 	
