@@ -2,13 +2,14 @@ extends Node2D
 
 const PLAIN_BUBBLE = preload("res://bubbles/PlainBubble.tscn")
 const GUM_BUBBLE = preload("res://bubbles/GumBubble.tscn")
+const ELEVATOR_BUBBLE = preload("res://bubbles/ElevatorBubble.tscn")
 
 var wand_with_bubble = preload("res://bubble_wand/bubblewandwithbubble.png")
 var wand_empty = preload("res://bubble_wand/bubblewand.png")
 
 var bubble = null
 var can_bubble = true
-var all_bubble_types = ["plain", "gum"]
+var all_bubble_types = ["plain", "gum", "elevator"]
 var bubble_type_index:int = 0
 
 
@@ -43,10 +44,13 @@ func _input(event: InputEvent) -> void:
 func blow_bubble(index: int):
 	print("blow_bubble says: " + str(can_bubble))
 	if can_bubble:
-		if index == 1:
-			bubble = GUM_BUBBLE.instantiate()
-		else:
-			bubble = PLAIN_BUBBLE.instantiate()
+		match index:
+			1:
+				bubble = GUM_BUBBLE.instantiate()
+			2:
+				bubble = ELEVATOR_BUBBLE.instantiate()
+			_:
+				bubble = PLAIN_BUBBLE.instantiate()
 		add_child(bubble)
 		bubble.scale = Vector2(1, 1) * Constants.BUBBLE_MIN_SCALE
 	
