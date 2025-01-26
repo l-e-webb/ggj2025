@@ -62,9 +62,11 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/normal_font_size = 30
 text = "Esther Fraser - Programmer
 Louis Webb - Programmer
-Keegan O-Toole - Artist
+Keegan O-Toole - Artist, Animator
 Kate Betman - Animator
-Roshan Kapur - Animator & Good Vibes"
+Alyson MacDonald - Graphic Artist
+Roshan Kapur - Programmer &
+Good Vibes"
 fit_content = true
 autowrap_mode = 0
 
