@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=4 uid="uid://5etdmbq5b5u5"]
+
+[ext_resource type="PackedScene" path="res://level_utils/platform_1.tscn" id="1_gbmh5"]
+[ext_resource type="Script" path="res://level_utils/start_location_controller.gd" id="2_6820q"]
+[ext_resource type="PackedScene" path="res://level_utils/platform_2.tscn" id="3_s4hsn"]
+[ext_resource type="PackedScene" uid="uid://dpd6rfck5w6nq" path="res://level_utils/goal/GoalArea2D.tscn" id="4_mgpiq"]
+[ext_resource type="PackedScene" uid="uid://x5ak26ci2pc3" path="res://level_utils/TileMap.tscn" id="5_rk3h3"]
+
+[node name="LevelThreeColumn" type="Node2D"]
+
+[node name="StartPlatform" parent="." instance=ExtResource("1_gbmh5")]
+position = Vector2(127, 659)
+scale = Vector2(0.451272, 0.451272)
+
+[node name="StartLocation" type="Marker2D" parent="StartPlatform"]
+position = Vector2(-93.0703, -270.347)
+scale = Vector2(2.21596, 2.21596)
+script = ExtResource("2_6820q")
+
+[node name="GoalPlatform" parent="." instance=ExtResource("3_s4hsn")]
+position = Vector2(1463, 716)
+scale = Vector2(0.201219, 0.201219)
+
+[node name="GoalArea2D" parent="GoalPlatform" instance=ExtResource("4_mgpiq")]
+position = Vector2(84.4854, -556.609)
+scale = Vector2(113.139, 80.2024)
+
+[node name="TileMap" parent="." instance=ExtResource("5_rk3h3")]
+tile_map_data = PackedByteArray("AAAEABAAAQAAAAAAAAAEAA8AAQAAAAAAAAAEAA4AAQAAAAAAAAAEAA0AAQAAAAAAAAAEAAwAAQAAAAAAAAAEAAsAAQAAAAAAAAAEAAkAAQAAAAAAAAAEAAoAAQAAAAAAAAAEAAgAAQAAAAAAAAAEAAcAAQAAAAAAAAAEAAYAAQAAAAAAAAAEAAUAAQAAAAAAAAAEAAQAAQAAAAAAAAAZABAAAQAAAAAAAAAZAA8AAQAAAAAAAAAZAA4AAQAAAAAAAAAZAA0AAQAAAAAAAAAZAAwAAQAAAAAAAAAZAAsAAQAAAAAAAAAZAAoAAQAAAAAAAAAZAAkAAQAAAAAAAAAZAAgAAQAAAAAAAAAZAAcAAQAAAAAAAAAZAAYAAQAAAAAAAAAZAAUAAQAAAAAAAAAZAAQAAQAAAAAAAAAPAAAAAQAAAAAAAAAPAAEAAQAAAAAAAAAPAAIAAQAAAAAAAAAPAAMAAQAAAAAAAAAPAAQAAQAAAAAAAAAPAAUAAQAAAAAAAAAPAAYAAQAAAAAAAAAPAAcAAQAAAAAAAAAPAAgAAQAAAAAAAAAPAAkAAQAAAAAAAAAPAP//AQAAAAAAAAAEABEAAQAAAAAAAAAEABIAAQAAAAAAAAAEABMAAQAAAAAAAAAZABEAAQAAAAAAAAAZABIAAQAAAAAAAAAZABMAAQAAAAAAAAAPAP7/AQAAAAAAAAAPAP3/AQAAAAAAAAAPAPz/AQAAAAAAAAAPAPv/AQAAAAAAAAA=")

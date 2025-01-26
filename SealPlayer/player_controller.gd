@@ -61,6 +61,14 @@ func _physics_process(delta: float) -> void:
 	handle_jump()
 	handle_horizontal_motion()
 	move_and_slide()
+	
+	# If the player has penetrated deep into something, send to start
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_depth() > 12.5:
+			SignalBus.send_player_to_start.emit()
+		
+
 
 func handle_jump():
 	if time_since_last_jump_command > Constants.PLAYER_JUMP_BUFFER_TIME:

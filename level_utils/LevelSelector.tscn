@@ -27,3 +27,15 @@ text = "LevelColumn"
 [node name="Button3" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 text = "LevelTrustFall"
+
+[node name="Button4" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "LevelThreeColumn"
+
+[node name="Button5" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "LevelChimney"
+
+[node name="Button6" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "LevelStairs"
