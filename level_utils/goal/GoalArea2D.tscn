@@ -1,10 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpd6rfck5w6nq"]
+[gd_scene load_steps=17 format=3 uid="uid://dpd6rfck5w6nq"]
 
 [ext_resource type="Script" path="res://level_utils/goal/goal_area_controller.gd" id="1_o57xw"]
 [ext_resource type="Texture2D" uid="uid://c22rcjbjyuorf" path="res://level_utils/goal/flag_0.png" id="2_tvhh3"]
 [ext_resource type="Texture2D" uid="uid://bb8bv10ka4hk7" path="res://level_utils/goal/flag_1.png" id="3_o7a8b"]
 [ext_resource type="Texture2D" uid="uid://bqyp2ey78387e" path="res://level_utils/goal/flag_2.png" id="4_jl54p"]
 [ext_resource type="Texture2D" uid="uid://c4c305xto7ny2" path="res://level_utils/goal/flag_3.png" id="5_sxpuo"]
+[ext_resource type="Texture2D" uid="uid://bfskoyb5rnb1d" path="res://level_utils/goal/confetti_1.png" id="6_3361m"]
+[ext_resource type="Texture2D" uid="uid://b3ul7ucqjxl40" path="res://level_utils/goal/confetti_2.png" id="7_52qmg"]
+[ext_resource type="Texture2D" uid="uid://kn8nt5dy64kw" path="res://level_utils/goal/confetti_3.png" id="8_h7ekk"]
+[ext_resource type="Texture2D" uid="uid://bw3hunmqxclj1" path="res://level_utils/goal/confetti_4.png" id="9_w4psn"]
+[ext_resource type="Texture2D" uid="uid://ciuxu03drwvey" path="res://level_utils/goal/confetti_5.png" id="10_jv11h"]
+[ext_resource type="Texture2D" uid="uid://bjq86w1oql43i" path="res://level_utils/goal/confetti_6.png" id="11_4is4w"]
+[ext_resource type="Texture2D" uid="uid://de7nr8lyqxvh2" path="res://level_utils/goal/confetti_7.png" id="12_klqlh"]
+[ext_resource type="Script" path="res://level_utils/goal/confetti.gd" id="13_mjdro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rsnq"]
 size = Vector2(10, 3)
@@ -38,6 +46,43 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_31kg3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3361m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_52qmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_h7ekk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_w4psn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jv11h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4is4w")
+}, {
+"duration": 1.5,
+"texture": ExtResource("12_klqlh")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"burst",
+"speed": 7.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}]
+
 [node name="GoalArea2D" type="Area2D"]
 collision_layer = 16
 script = ExtResource("1_o57xw")
@@ -52,3 +97,9 @@ position = Vector2(4, 1)
 scale = Vector2(0.0128784, 0.0128784)
 sprite_frames = SubResource("SpriteFrames_x7xst")
 autoplay = "default"
+
+[node name="Confetti" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.03, 0.03)
+sprite_frames = SubResource("SpriteFrames_31kg3")
+animation = &"empty"
+script = ExtResource("13_mjdro")

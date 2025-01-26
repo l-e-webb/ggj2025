@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://2pjpbsf8djxs"]
+[gd_scene load_steps=10 format=3 uid="uid://2pjpbsf8djxs"]
 
 [ext_resource type="Texture2D" uid="uid://dbxvlr010bm3b" path="res://menu_assets/menubgd.png" id="1_8nmvo"]
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_fhabf"]
@@ -6,6 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://c8itrgpgbdy2s" path="res://menu_assets/play_button.png" id="4_4qg6p"]
 [ext_resource type="Texture2D" uid="uid://btqq3pyulrt8p" path="res://menu_assets/credits_button.png" id="5_f7caf"]
 [ext_resource type="Texture2D" uid="uid://b6qc2uqcuojde" path="res://menu_assets/thank_you_decal.png" id="6_d8sl5"]
+[ext_resource type="Texture2D" uid="uid://c3tac20rsebp" path="res://menu_assets/opening_img.png" id="7_mwsmm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg5jn"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0jni"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.556863)
 
 [node name="mainmenu" type="Node2D"]
 script = ExtResource("1_fhabf")
@@ -62,9 +73,11 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/normal_font_size = 30
 text = "Esther Fraser - Programmer
 Louis Webb - Programmer
-Keegan O-Toole - Artist
+Keegan O-Toole - Artist, Animator
 Kate Betman - Animator
-Roshan Kapur - Animator & Good Vibes"
+Alyson MacDonald - Graphic Artist
+Roshan Kapur - Programmer &
+Good Vibes"
 fit_content = true
 autowrap_mode = 0
 
@@ -76,6 +89,37 @@ offset_right = 5040.0
 offset_bottom = 1907.0
 scale = Vector2(0.117562, 0.117562)
 texture_normal = ExtResource("6_d8sl5")
+
+[node name="OpeningBg" type="Panel" parent="."]
+visible = false
+offset_right = 1600.0
+offset_bottom = 900.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mg5jn")
+
+[node name="TextureRect" type="TextureRect" parent="OpeningBg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_mwsmm")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SealDialogueLabel" type="RichTextLabel" parent="OpeningBg"]
+visible = false
+layout_mode = 0
+offset_left = 682.0
+offset_top = 771.0
+offset_right = 1383.0
+offset_bottom = 875.0
+theme_override_font_sizes/normal_font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_o0jni")
+text = "“Wa gigggph d’egg mibpth (sneezes) mgnngph.”
+(Translation: “I want to go see big ball.”)"
+fit_content = true
+autowrap_mode = 0
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
