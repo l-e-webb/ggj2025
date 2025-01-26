@@ -62,10 +62,12 @@ func handle_jump():
 		# Floor jump
 		velocity.y = -Constants.PLAYER_FLOOR_JUMP_VELOCITY
 		has_air_jump = true
+		SignalBus.seal_jump.emit()
 	elif has_air_jump and time_since_on_floor > Constants.MIN_TIME_BEFORE_SECOND_JUMP:
 		# Air jump
 		velocity.y = -Constants.PLAYER_AIR_JUMP_VELOCITY
 		has_air_jump = false
+		SignalBus.seal_jump.emit()
 	else:
 		# Attempting to jump in the air with no air jump remaining, or too soon
 		# after a ground jump
@@ -119,6 +121,7 @@ func jump_off_bubble():
 	global_scale = size
 	
 	# actually jump
+	SignalBus.seal_jump.emit()
 	if self.global_position.y <= gum_bubble.global_position.y:
 		velocity.y = -Constants.PLAYER_FLOOR_JUMP_VELOCITY
 	else:
