@@ -30,16 +30,26 @@ func _on_win():
 		return
 	
 	awaiting_level_change = true
-	await get_tree().create_timer(1.25).timeout
+	await get_tree().create_timer(2).timeout
 	var current_level_index = level_order.find(current_level_name)
 	if current_level_index == -1:
 		return
 	
 	current_level_index += 1
-	current_level_index = current_level_index % level_order.size()
+	if current_level_index >= level_order.size():
+		get_tree().change_scene_to_file("res://Ending.tscn")
+		return
+	
+	# Get rid of the player for a minute
+	SignalBus.set_player_position.emit(Vector2(-1000, -1000))
+	
 	if current_level_index < level_order.size():
 		SignalBus.load_level.emit(level_order[current_level_index])
 	awaiting_level_change = false
+	call_deferred("spawn_player")
+
+func spawn_player():
+	SignalBus.send_player_to_start.emit()
 
 func check_update_background():
 	var current_level_index = level_order.find(current_level_name)

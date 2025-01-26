@@ -1,26 +1,120 @@
-[gd_scene load_steps=18 format=3 uid="uid://bsbdnfuopa0p0"]
+[gd_scene load_steps=39 format=3 uid="uid://bsbdnfuopa0p0"]
 
 [ext_resource type="Script" path="res://SealPlayer/player_controller.gd" id="1_at7ki"]
+[ext_resource type="Texture2D" uid="uid://jnsd808bq6tv" path="res://SealPlayer/SealDanceEnd/SealDanceEnd0061.png" id="2_rk25r"]
 [ext_resource type="Texture2D" uid="uid://c0xunqfofdgsr" path="res://SealPlayer/SealWalk0001.png" id="2_vyhyj"]
+[ext_resource type="Texture2D" uid="uid://c34mdrqfyjwux" path="res://SealPlayer/SealDanceEnd/SealDanceEnd0063.png" id="3_j6p2q"]
 [ext_resource type="Texture2D" uid="uid://vmi5e1bh2let" path="res://SealPlayer/SealWalk0005.png" id="3_vjqgp"]
+[ext_resource type="Texture2D" uid="uid://cx2vptw54bibl" path="res://SealPlayer/SealDanceEnd/SealDanceEnd0065.png" id="4_7blnj"]
 [ext_resource type="Texture2D" uid="uid://ceak8npbj8d4e" path="res://SealPlayer/SealWalk0003.png" id="4_luq1q"]
 [ext_resource type="Texture2D" uid="uid://dw7dlup0crrpj" path="res://SealPlayer/SealFallSprites/SealFall0013.png" id="4_wkuon"]
 [ext_resource type="Texture2D" uid="uid://hhgbqy7ob87k" path="res://SealPlayer/SealFallSprites/SealFall0015.png" id="5_7gtbt"]
+[ext_resource type="Texture2D" uid="uid://dhetunyk20xcr" path="res://SealPlayer/SealDanceEnd/SealDanceEnd0067.png" id="5_i44es"]
 [ext_resource type="Texture2D" uid="uid://og0l4i52s324" path="res://SealPlayer/SealWalk0007.png" id="5_p6elt"]
 [ext_resource type="Texture2D" uid="uid://w4bcq45cxg0o" path="res://SealPlayer/SealJumpSprites/SealJump0049.png" id="5_shagk"]
+[ext_resource type="Texture2D" uid="uid://bfo1glgv4rpnx" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0041.png" id="6_1p8a1"]
 [ext_resource type="Texture2D" uid="uid://docy5o51djmhi" path="res://SealPlayer/SealFallSprites/SealFall0017.png" id="6_fi6pb"]
 [ext_resource type="Texture2D" uid="uid://vtc6tak6o367" path="res://SealPlayer/SealWalk0009.png" id="6_j48j5"]
 [ext_resource type="Texture2D" uid="uid://de5jkslos68oq" path="res://SealPlayer/SealJumpSprites/SealJump0051.png" id="6_s3tqr"]
+[ext_resource type="Texture2D" uid="uid://d1hhja1fncj8" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0043.png" id="7_17q4s"]
 [ext_resource type="Texture2D" uid="uid://bwawtbfpgmofy" path="res://SealPlayer/SealJumpSprites/SealJump0043.png" id="7_cyc2i"]
 [ext_resource type="Texture2D" uid="uid://bjb4n38ipg7w3" path="res://SealPlayer/SealFallSprites/SealFall0019.png" id="7_no1s6"]
 [ext_resource type="Texture2D" uid="uid://bu31eei7fg8ek" path="res://SealPlayer/SealWalk0011.png" id="7_wlues"]
 [ext_resource type="Texture2D" uid="uid://6mmddk54xceo" path="res://SealPlayer/SealJumpSprites/SealJump0045.png" id="8_0a4xf"]
+[ext_resource type="Texture2D" uid="uid://bgit682n43vxa" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0045.png" id="8_2y851"]
+[ext_resource type="Texture2D" uid="uid://dikbeeld6iix5" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0053.png" id="9_tcor0"]
+[ext_resource type="Texture2D" uid="uid://gby8reay6f3j" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0055.png" id="10_lrlla"]
+[ext_resource type="Texture2D" uid="uid://dh1cb7wifh7cj" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0057.png" id="11_nebgw"]
+[ext_resource type="Texture2D" uid="uid://r12frsvwejx" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0059.png" id="12_172sp"]
+[ext_resource type="Texture2D" uid="uid://cjwpmefqkle01" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0061.png" id="13_v432n"]
+[ext_resource type="Texture2D" uid="uid://c52o1qvlo877v" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0063.png" id="14_hmmun"]
+[ext_resource type="Texture2D" uid="uid://dl7e8vo4h7lgq" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0065.png" id="15_rbsxx"]
+[ext_resource type="Texture2D" uid="uid://dkct4404ox5dg" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0067.png" id="16_bsdan"]
+[ext_resource type="Texture2D" uid="uid://b4pvklf16snnr" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0069.png" id="17_yitpq"]
+[ext_resource type="Texture2D" uid="uid://bky0qd1jcg0iq" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0071.png" id="18_j3b0a"]
+[ext_resource type="Texture2D" uid="uid://bq0qelmlc6gn" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0073.png" id="19_1sjot"]
+[ext_resource type="Texture2D" uid="uid://bk2pb7bg1wgyk" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0075.png" id="20_wvfm6"]
+[ext_resource type="Texture2D" uid="uid://cniyknfjil6qy" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0077.png" id="21_bdh2d"]
+[ext_resource type="Texture2D" uid="uid://be7bisbkrojx0" path="res://SealPlayer/SealDanceLevel/SealDanceLevel0079.png" id="22_d1gby"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8atd8"]
 size = Vector2(25.3247, 27)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cvq05"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rk25r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j6p2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7blnj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i44es")
+}],
+"loop": true,
+"name": &"DanceEnd",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.3,
+"texture": ExtResource("6_1p8a1")
+}, {
+"duration": 1.3,
+"texture": ExtResource("7_17q4s")
+}, {
+"duration": 3.5,
+"texture": ExtResource("8_2y851")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tcor0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lrlla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nebgw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_172sp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_v432n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_hmmun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rbsxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_bsdan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_yitpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_j3b0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1sjot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_wvfm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_bdh2d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_d1gby")
+}],
+"loop": true,
+"name": &"DanceLevelEnd",
+"speed": 9.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_vyhyj")
@@ -126,5 +220,6 @@ z_index = 5
 position = Vector2(-1, -18)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_cvq05")
-animation = &"OnBubble"
+animation = &"DanceLevelEnd"
 autoplay = "Run"
+frame_progress = 0.432292

@@ -2,7 +2,7 @@ extends Node2D
 
 func _on_play_button_pressed() -> void:
 	$OpeningBg.visible = true
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.5).timeout
 	$OpeningBg/SealDialogueLabel.visible = true
 	await get_tree().create_timer(10).timeout
 	go_to_game()

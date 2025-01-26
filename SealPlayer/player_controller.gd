@@ -6,14 +6,23 @@ var time_on_floor = 10000. # just a big number
 var has_air_jump = false
 var gum_bubble = null
 
+@export var in_end_dance = false
+@export var in_level_end_dance = false
+
 var desired_animation = StringName("Idle")
 
 func _ready():
+	SignalBus.player_win.connect(_on_player_win)
+	SignalBus.send_player_to_start.connect(_on_send_player_to_start)
 	SignalBus.set_player_position.connect(_on_set_player_position)
 	
 func _process(delta: float):
 	
-	if gum_bubble != null:
+	if in_end_dance:
+		desired_animation = StringName("DanceEnd")
+	elif in_level_end_dance:
+		desired_animation = StringName("DanceLevelEnd")
+	elif gum_bubble != null:
 		desired_animation = StringName("OnBubble")
 	elif is_on_floor():
 		if time_on_floor < 0.25:
@@ -38,6 +47,8 @@ func _process(delta: float):
 		$AnimatedSprite2D.play(desired_animation)
 
 func _physics_process(delta: float) -> void:
+	if in_end_dance:
+		return
 	
 	if gum_bubble != null:
 		handle_bubble_controls(delta)
@@ -58,7 +69,8 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	velocity += get_gravity() * delta
 
-	handle_jump()
+	if !in_level_end_dance:
+		handle_jump()
 	handle_horizontal_motion()
 	move_and_slide()
 	
@@ -95,14 +107,12 @@ func handle_jump():
 
 func handle_horizontal_motion():
 	var direction = Input.get_axis("ui_left", "ui_right")
+	if in_end_dance or in_level_end_dance:
+		direction = 0 # hack
 	if direction:
 		velocity.x = direction * Constants.PLAYER_HORIZONTAL_SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, Constants.PLAYER_HORIZONTAL_SPEED)
-
-func _on_set_player_position(pos: Vector2):
-	global_position = pos
-	velocity = Vector2()
 
 func boundary_collision():
 	SignalBus.send_player_to_start.emit()
@@ -134,7 +144,7 @@ func jump_off_bubble():
 	
 	var pos = global_position
 	var size = global_scale
-	var root_node = get_tree().root
+	var root_node = get_tree().current_scene
 	gum_bubble.remove_child(self)
 	root_node.add_child(self)
 	global_position = pos
@@ -152,3 +162,14 @@ func jump_off_bubble():
 	
 	gum_bubble.pop()
 	gum_bubble = null
+
+func _on_player_win():
+	in_level_end_dance = true
+
+func _on_send_player_to_start():
+	in_level_end_dance = false
+	in_end_dance = false
+
+func _on_set_player_position(pos: Vector2):
+	global_position = pos
+	velocity = Vector2()
