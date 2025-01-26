@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=4 uid="uid://c71e0xy603oy6"]
+
+[ext_resource type="PackedScene" path="res://level_utils/platform_1.tscn" id="1_je3g8"]
+[ext_resource type="Script" path="res://level_utils/start_location_controller.gd" id="2_exhvt"]
+[ext_resource type="PackedScene" path="res://level_utils/platform_2.tscn" id="3_ne3q2"]
+[ext_resource type="PackedScene" uid="uid://dpd6rfck5w6nq" path="res://level_utils/goal/GoalArea2D.tscn" id="4_vp4vm"]
+[ext_resource type="PackedScene" uid="uid://x5ak26ci2pc3" path="res://level_utils/TileMap.tscn" id="5_c5bxj"]
+
+[node name="EmptyLevel" type="Node2D"]
+
+[node name="StartPlatform" parent="." instance=ExtResource("1_je3g8")]
+position = Vector2(134, 200)
+scale = Vector2(0.451272, 0.451272)
+
+[node name="StartLocation" type="Marker2D" parent="StartPlatform"]
+position = Vector2(-93.0703, -270.347)
+scale = Vector2(2.21596, 2.21596)
+script = ExtResource("2_exhvt")
+
+[node name="GoalPlatform" parent="." instance=ExtResource("3_ne3q2")]
+position = Vector2(156, 577)
+scale = Vector2(0.201219, 0.201219)
+
+[node name="GoalArea2D" parent="GoalPlatform" instance=ExtResource("4_vp4vm")]
+position = Vector2(84.4854, -556.609)
+scale = Vector2(113.139, 80.2024)
+
+[node name="TileMap" parent="." instance=ExtResource("5_c5bxj")]
+position = Vector2(1765.83, 629.876)
+tile_map_data = PackedByteArray("AADi//f/AQAAAAAAAADj//f/AQAAAAAAAADk//f/AQAAAAAAAADl//f/AQAAAAAAAADm//f/AQAAAAAAAADn//f/AQAAAAAAAADo//f/AQAAAAAAAADp//f/AQAAAAAAAADq//f/AQAAAAAAAADr//f/AQAAAAAAAADs//f/AQAAAAAAAADt//f/AQAAAAAAAADu//f/AQAAAAAAAADv//f/AQAAAAAAAADw//f/AQAAAAAAAADx//f/AQAAAAAAAADy//f/AQAAAAAAAAD0//f/AQAAAAAAAADz//f/AQAAAAAAAAD1//f/AQAAAAAAAAD2//f/AQAAAAAAAAD3//f/AQAAAAAAAAA=")

@@ -4,6 +4,7 @@ extends Node2D
 
 var current_level = null
 var current_level_name: String
+var awaiting_level_change = false
 
 func _ready():
 	SignalBus.load_level.connect(load_level)
@@ -21,6 +22,10 @@ func load_level(name: String):
 	add_child(current_level)
 
 func _on_win():
+	if awaiting_level_change:
+		return
+	
+	awaiting_level_change = true
 	await get_tree().create_timer(0.5).timeout
 	var current_level_index = level_order.find(current_level_name)
 	if current_level_index == -1:
@@ -30,3 +35,4 @@ func _on_win():
 	current_level_index = current_level_index % level_order.size()
 	if current_level_index < level_order.size():
 		SignalBus.load_level.emit(level_order[current_level_index])
+	awaiting_level_change = false
