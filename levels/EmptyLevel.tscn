@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://mwiibtpew6qp"]
 
 [ext_resource type="Script" path="res://level_utils/start_location_controller.gd" id="1_bprxy"]
-[ext_resource type="PackedScene" uid="uid://bdpbfvmltxok5" path="res://level_utils/platform_1.tscn" id="1_fcu74"]
+[ext_resource type="PackedScene" path="res://level_utils/platform_1.tscn" id="1_fcu74"]
 [ext_resource type="PackedScene" uid="uid://dpd6rfck5w6nq" path="res://level_utils/GoalArea2D.tscn" id="2_yeuhk"]
-[ext_resource type="PackedScene" uid="uid://r56umgnv64hf" path="res://level_utils/platform_2.tscn" id="3_25u6o"]
+[ext_resource type="PackedScene" path="res://level_utils/platform_2.tscn" id="3_25u6o"]
 
 [node name="EmptyLevel" type="Node2D"]
 
@@ -12,7 +12,7 @@ position = Vector2(127, 659)
 scale = Vector2(0.451272, 0.451272)
 
 [node name="StartLocation" type="Marker2D" parent="StartPlatform"]
-position = Vector2(-57.6149, -203.868)
+position = Vector2(-93.0703, -270.347)
 scale = Vector2(2.21596, 2.21596)
 script = ExtResource("1_bprxy")
 
