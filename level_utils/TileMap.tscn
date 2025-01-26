@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://x5ak26ci2pc3"]
+
+[ext_resource type="TileSet" uid="uid://c7rkkupsdv464" path="res://level_utils/block_tileset.tres" id="1_j3wuy"]
+
+[node name="TileMap" type="TileMapLayer"]
+scale = Vector2(0.075, 0.075)
+tile_set = ExtResource("1_j3wuy")

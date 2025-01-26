@@ -100,7 +100,7 @@ func stick_to_bubble(bubble: Node2D):
 	
 	var pos = global_position
 	var size = global_scale
-	self.get_parent().remove_child(self) 
+	self.get_parent().remove_child(self)
 	gum_bubble.add_child(self)
 	global_position = pos
 	global_scale = size
