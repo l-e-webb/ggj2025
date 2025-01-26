@@ -84,6 +84,5 @@ func reload():
 	print("reload: " + str(can_bubble))
 	
 
-# stretch: change bubble type
 
 # strech: stop the wand from going offscreen
