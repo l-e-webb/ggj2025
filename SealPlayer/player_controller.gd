@@ -5,8 +5,27 @@ var time_since_on_floor = 10000. # just a big number
 var has_air_jump = false
 var gum_bubble = null
 
+var desired_animation = StringName("Idle")
+
 func _ready():
 	SignalBus.set_player_position.connect(_on_set_player_position)
+	
+func _process(delta: float):
+	
+	if is_on_floor() and velocity.x != 0:
+		desired_animation = StringName("Run")
+	elif is_on_floor() and velocity.x == 0:
+		desired_animation = StringName("Idle")
+	else:
+		desired_animation = StringName("Jump")
+			
+	if velocity.x < 0:
+		$AnimatedSprite2D.flip_h = true
+	if velocity.x > 0:
+		$AnimatedSprite2D.flip_h = false
+		
+	if $AnimatedSprite2D.animation != desired_animation:
+		$AnimatedSprite2D.animation = desired_animation
 
 func _physics_process(delta: float) -> void:
 	

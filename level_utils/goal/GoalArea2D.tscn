@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpd6rfck5w6nq"]
+
+[ext_resource type="Script" path="res://level_utils/goal/goal_area_controller.gd" id="1_o57xw"]
+[ext_resource type="Texture2D" uid="uid://c22rcjbjyuorf" path="res://level_utils/goal/flag_0.png" id="2_tvhh3"]
+[ext_resource type="Texture2D" uid="uid://bb8bv10ka4hk7" path="res://level_utils/goal/flag_1.png" id="3_o7a8b"]
+[ext_resource type="Texture2D" uid="uid://bqyp2ey78387e" path="res://level_utils/goal/flag_2.png" id="4_jl54p"]
+[ext_resource type="Texture2D" uid="uid://c4c305xto7ny2" path="res://level_utils/goal/flag_3.png" id="5_sxpuo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rsnq"]
+size = Vector2(10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x7xst"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_o7a8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jl54p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sxpuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tvhh3")
+}],
+"loop": true,
+"name": &"Win",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tvhh3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GoalArea2D" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_o57xw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3rsnq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 1, 0.384314, 1)
+position = Vector2(4, 1)
+scale = Vector2(0.0128784, 0.0128784)
+sprite_frames = SubResource("SpriteFrames_x7xst")
+autoplay = "default"
