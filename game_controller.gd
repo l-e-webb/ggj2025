@@ -1,5 +1,4 @@
 extends Node2D
-
 @export var starting_level: String
 var current_level = null
 
