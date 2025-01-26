@@ -1,23 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://op5qldk6kfdr"]
+[gd_scene load_steps=4 format=3 uid="uid://2pjpbsf8djxs"]
+
 [ext_resource type="Texture2D" uid="uid://dbxvlr010bm3b" path="res://menu_assets/menubgd.png" id="1_8nmvo"]
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_fhabf"]
 [ext_resource type="Texture2D" uid="uid://de3vlptom8wjp" path="res://menu_assets/sealestial.png" id="2_0k67t"]
+
 [node name="mainmenu" type="Node2D"]
 script = ExtResource("1_fhabf")
 metadata/_edit_horizontal_guides_ = [0.0, 898.0, 448.0]
 metadata/_edit_vertical_guides_ = [1600.0, 0.0, 799.0]
+
 [node name="Menu background" type="Sprite2D" parent="."]
 position = Vector2(799, 447.5)
 scale = Vector2(0.834375, 0.834259)
 texture = ExtResource("1_8nmvo")
+
 [node name="Sealestial" type="Sprite2D" parent="."]
 position = Vector2(799, 268)
 scale = Vector2(0.145429, 0.147274)
 texture = ExtResource("2_0k67t")
+
 [node name="Button" type="Button" parent="."]
 offset_left = 652.0
 offset_top = 448.0
 offset_right = 951.0
 offset_bottom = 551.0
 text = "PLAY"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

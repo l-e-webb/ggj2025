@@ -16,7 +16,7 @@ size = Vector2(24, 1265.25)
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_msits")
-starting_level = "EmptyLevel"
+level_order = ["EmptyLevel", "LevelColumn"]
 
 [node name="BubbleWand" parent="." instance=ExtResource("1_yoyv3")]
 z_index = 4
