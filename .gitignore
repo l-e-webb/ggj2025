@@ -16,3 +16,6 @@ mono_crash.*.json
 
 # git plugin
 addons/godot-git-plugin/
+
+# Completed builds
+export/

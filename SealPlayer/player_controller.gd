@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var time_since_last_jump_command = 10000. # just a big number
 var time_since_on_floor = 10000. # just a big number
+var time_on_floor = 10000. # just a big number
 var has_air_jump = false
 var gum_bubble = null
 
@@ -12,12 +13,21 @@ func _ready():
 	
 func _process(delta: float):
 	
-	if is_on_floor() and velocity.x != 0:
-		desired_animation = StringName("Run")
-	elif is_on_floor() and velocity.x == 0:
-		desired_animation = StringName("Idle")
+	if gum_bubble != null:
+		desired_animation = StringName("OnBubble")
+	elif is_on_floor():
+		if time_on_floor < 0.25:
+			desired_animation = StringName("JumpLand")
+		elif velocity.x == 0:
+			desired_animation = StringName("Idle")
+		else:
+			desired_animation = StringName("Run")
 	else:
-		desired_animation = StringName("Jump")
+		# In air
+		if velocity.y < 1:
+			desired_animation = StringName("JumpUp")
+		else:
+			desired_animation = StringName("JumpDown")
 			
 	if velocity.x < 0:
 		$AnimatedSprite2D.flip_h = true
@@ -25,7 +35,7 @@ func _process(delta: float):
 		$AnimatedSprite2D.flip_h = false
 		
 	if $AnimatedSprite2D.animation != desired_animation:
-		$AnimatedSprite2D.animation = desired_animation
+		$AnimatedSprite2D.play(desired_animation)
 
 func _physics_process(delta: float) -> void:
 	
@@ -35,7 +45,9 @@ func _physics_process(delta: float) -> void:
 		
 	if is_on_floor():
 		time_since_on_floor = 0.
+		time_on_floor += delta
 	else:
+		time_on_floor = 0
 		time_since_on_floor += delta
 	
 	if Input.is_action_just_pressed("ui_accept"):
@@ -49,6 +61,14 @@ func _physics_process(delta: float) -> void:
 	handle_jump()
 	handle_horizontal_motion()
 	move_and_slide()
+	
+	# If the player has penetrated deep into something, send to start
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_depth() > 12.5:
+			SignalBus.send_player_to_start.emit()
+		
+
 
 func handle_jump():
 	if time_since_last_jump_command > Constants.PLAYER_JUMP_BUFFER_TIME:
@@ -121,10 +141,14 @@ func jump_off_bubble():
 	global_scale = size
 	
 	# actually jump
-	SignalBus.seal_jump.emit()
-	if self.global_position.y <= gum_bubble.global_position.y:
+    SignalBus.seal_jump.emit()
+	if self.global_position.y <= gum_bubble.global_position.y + 50:
 		velocity.y = -Constants.PLAYER_FLOOR_JUMP_VELOCITY
 	else:
 		velocity.y = 0
+	time_since_last_jump_command = 0.
+	has_air_jump = true
 	
+	
+	gum_bubble.pop()
 	gum_bubble = null

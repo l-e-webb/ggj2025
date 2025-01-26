@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dpd6rfck5w6nq" path="res://level_utils/goal/GoalArea2D.tscn" id="4_jr5oo"]
 [ext_resource type="PackedScene" uid="uid://x5ak26ci2pc3" path="res://level_utils/TileMap.tscn" id="5_nt21o"]
 
-[node name="EmptyLevel" type="Node2D"]
+[node name="LevelColumn" type="Node2D"]
 
 [node name="StartPlatform" parent="." instance=ExtResource("1_m7pad")]
 position = Vector2(127, 659)
