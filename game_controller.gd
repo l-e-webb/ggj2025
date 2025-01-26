@@ -2,6 +2,9 @@ extends Node2D
 
 @export var level_order: Array = []
 
+var eve_bg = preload("res://level_utils/eveningbackground.png")
+var night_bg = preload("res://level_utils/nightbackground.png")
+
 var current_level = null
 var current_level_name: String
 var awaiting_level_change = false
@@ -20,6 +23,7 @@ func load_level(name: String):
 	var full_name = "res://levels/%s.tscn" % name
 	current_level = load(full_name).instantiate()
 	add_child(current_level)
+	check_update_background()
 
 func _on_win():
 	if awaiting_level_change:
@@ -36,3 +40,13 @@ func _on_win():
 	if current_level_index < level_order.size():
 		SignalBus.load_level.emit(level_order[current_level_index])
 	awaiting_level_change = false
+
+func check_update_background():
+	var current_level_index = level_order.find(current_level_name)
+	if current_level_index == -1:
+		return
+	
+	if current_level_index > level_order.size() / 2:
+		$BackgroundImage.texture = night_bg
+	else:
+		$BackgroundImage.texture = eve_bg
