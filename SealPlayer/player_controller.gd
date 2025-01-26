@@ -13,7 +13,9 @@ func _ready():
 	
 func _process(delta: float):
 	
-	if is_on_floor():
+	if gum_bubble != null:
+		desired_animation = StringName("OnBubble")
+	elif is_on_floor():
 		if time_on_floor < 0.25:
 			desired_animation = StringName("JumpLand")
 		elif velocity.x == 0:
@@ -129,9 +131,13 @@ func jump_off_bubble():
 	global_scale = size
 	
 	# actually jump
-	if self.global_position.y <= gum_bubble.global_position.y:
+	if self.global_position.y <= gum_bubble.global_position.y + 50:
 		velocity.y = -Constants.PLAYER_FLOOR_JUMP_VELOCITY
 	else:
 		velocity.y = 0
+	time_since_last_jump_command = 0.
+	has_air_jump = true
 	
+	
+	gum_bubble.pop()
 	gum_bubble = null

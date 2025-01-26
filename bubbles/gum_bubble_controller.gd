@@ -4,9 +4,11 @@ func _ready() -> void:
 	# handle collisions with player
 	$Area2D.body_entered.connect(on_bubble_stick)
 	$Area2D.body_exited.connect(on_bubble_unstick)
+	$Area2D.monitoring = false
 
 func begin_floating():
 	set_pop_timer()
+	$Area2D.monitoring = true
 	
 	var rise_tween = get_tree().create_tween()
 	rise_tween.bind_node(self)

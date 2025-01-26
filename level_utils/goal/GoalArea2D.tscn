@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c4c305xto7ny2" path="res://level_utils/goal/flag_3.png" id="5_sxpuo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rsnq"]
-size = Vector2(10, 10)
+size = Vector2(10, 3)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x7xst"]
 resource_local_to_scene = true
@@ -43,6 +43,7 @@ collision_layer = 16
 script = ExtResource("1_o57xw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_3rsnq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

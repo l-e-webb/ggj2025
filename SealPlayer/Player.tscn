@@ -78,6 +78,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_vjqgp")
+}],
+"loop": false,
+"name": &"OnBubble",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("4_luq1q")
 }, {
 "duration": 1.0,
@@ -118,5 +126,5 @@ z_index = 5
 position = Vector2(-1, -18)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_cvq05")
-animation = &"JumpDown"
+animation = &"OnBubble"
 autoplay = "Run"
