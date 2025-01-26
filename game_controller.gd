@@ -30,7 +30,7 @@ func _on_win():
 		return
 	
 	awaiting_level_change = true
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1.25).timeout
 	var current_level_index = level_order.find(current_level_name)
 	if current_level_index == -1:
 		return
