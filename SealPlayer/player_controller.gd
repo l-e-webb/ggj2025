@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var time_since_last_jump_command = 10000. # just a big number
 var time_since_on_floor = 10000. # just a big number
+var time_on_floor = 10000. # just a big number
 var has_air_jump = false
 var gum_bubble = null
 
@@ -12,12 +13,19 @@ func _ready():
 	
 func _process(delta: float):
 	
-	if is_on_floor() and velocity.x != 0:
-		desired_animation = StringName("Run")
-	elif is_on_floor() and velocity.x == 0:
-		desired_animation = StringName("Idle")
+	if is_on_floor():
+		if time_on_floor < 0.25:
+			desired_animation = StringName("JumpLand")
+		elif velocity.x == 0:
+			desired_animation = StringName("Idle")
+		else:
+			desired_animation = StringName("Run")
 	else:
-		desired_animation = StringName("Jump")
+		# In air
+		if velocity.y < 1:
+			desired_animation = StringName("JumpUp")
+		else:
+			desired_animation = StringName("JumpDown")
 			
 	if velocity.x < 0:
 		$AnimatedSprite2D.flip_h = true
@@ -25,7 +33,7 @@ func _process(delta: float):
 		$AnimatedSprite2D.flip_h = false
 		
 	if $AnimatedSprite2D.animation != desired_animation:
-		$AnimatedSprite2D.animation = desired_animation
+		$AnimatedSprite2D.play(desired_animation)
 
 func _physics_process(delta: float) -> void:
 	
@@ -35,7 +43,9 @@ func _physics_process(delta: float) -> void:
 		
 	if is_on_floor():
 		time_since_on_floor = 0.
+		time_on_floor += delta
 	else:
+		time_on_floor = 0
 		time_since_on_floor += delta
 	
 	if Input.is_action_just_pressed("ui_accept"):

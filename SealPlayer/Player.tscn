@@ -1,12 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsbdnfuopa0p0"]
+[gd_scene load_steps=18 format=3 uid="uid://bsbdnfuopa0p0"]
 
 [ext_resource type="Script" path="res://SealPlayer/player_controller.gd" id="1_at7ki"]
 [ext_resource type="Texture2D" uid="uid://c0xunqfofdgsr" path="res://SealPlayer/SealWalk0001.png" id="2_vyhyj"]
 [ext_resource type="Texture2D" uid="uid://vmi5e1bh2let" path="res://SealPlayer/SealWalk0005.png" id="3_vjqgp"]
 [ext_resource type="Texture2D" uid="uid://ceak8npbj8d4e" path="res://SealPlayer/SealWalk0003.png" id="4_luq1q"]
+[ext_resource type="Texture2D" uid="uid://dw7dlup0crrpj" path="res://SealPlayer/SealFallSprites/SealFall0013.png" id="4_wkuon"]
+[ext_resource type="Texture2D" uid="uid://hhgbqy7ob87k" path="res://SealPlayer/SealFallSprites/SealFall0015.png" id="5_7gtbt"]
 [ext_resource type="Texture2D" uid="uid://og0l4i52s324" path="res://SealPlayer/SealWalk0007.png" id="5_p6elt"]
+[ext_resource type="Texture2D" uid="uid://w4bcq45cxg0o" path="res://SealPlayer/SealJumpSprites/SealJump0049.png" id="5_shagk"]
+[ext_resource type="Texture2D" uid="uid://docy5o51djmhi" path="res://SealPlayer/SealFallSprites/SealFall0017.png" id="6_fi6pb"]
 [ext_resource type="Texture2D" uid="uid://vtc6tak6o367" path="res://SealPlayer/SealWalk0009.png" id="6_j48j5"]
+[ext_resource type="Texture2D" uid="uid://de5jkslos68oq" path="res://SealPlayer/SealJumpSprites/SealJump0051.png" id="6_s3tqr"]
+[ext_resource type="Texture2D" uid="uid://bwawtbfpgmofy" path="res://SealPlayer/SealJumpSprites/SealJump0043.png" id="7_cyc2i"]
+[ext_resource type="Texture2D" uid="uid://bjb4n38ipg7w3" path="res://SealPlayer/SealFallSprites/SealFall0019.png" id="7_no1s6"]
 [ext_resource type="Texture2D" uid="uid://bu31eei7fg8ek" path="res://SealPlayer/SealWalk0011.png" id="7_wlues"]
+[ext_resource type="Texture2D" uid="uid://6mmddk54xceo" path="res://SealPlayer/SealJumpSprites/SealJump0045.png" id="8_0a4xf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8atd8"]
 size = Vector2(25.3247, 27)
@@ -27,6 +35,45 @@ animations = [{
 }],
 "loop": true,
 "name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wkuon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7gtbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fi6pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_no1s6")
+}],
+"loop": false,
+"name": &"JumpDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_shagk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s3tqr")
+}],
+"loop": false,
+"name": &"JumpLand",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_cyc2i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0a4xf")
+}],
+"loop": false,
+"name": &"JumpUp",
 "speed": 5.0
 }, {
 "frames": [{
@@ -69,7 +116,7 @@ shape = SubResource("RectangleShape2D_8atd8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 5
 position = Vector2(-1, -18)
-scale = Vector2(0.09, 0.09)
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_cvq05")
-animation = &"Run"
+animation = &"JumpDown"
 autoplay = "Run"
