@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dpd6rfck5w6nq" path="res://level_utils/goal/GoalArea2D.tscn" id="2_yeuhk"]
 [ext_resource type="PackedScene" uid="uid://r56umgnv64hf" path="res://level_utils/platform_2.tscn" id="3_25u6o"]
 
+
 [node name="EmptyLevel" type="Node2D"]
 
 [node name="StartPlatform" parent="." instance=ExtResource("1_fcu74")]
@@ -12,7 +13,7 @@ position = Vector2(127, 659)
 scale = Vector2(0.451272, 0.451272)
 
 [node name="StartLocation" type="Marker2D" parent="StartPlatform"]
-position = Vector2(-57.6149, -203.868)
+position = Vector2(-93.0703, -270.347)
 scale = Vector2(2.21596, 2.21596)
 script = ExtResource("1_bprxy")
 

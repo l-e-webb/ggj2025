@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ovdtsiohg1c0"]
+
+[ext_resource type="Script" path="res://bubbles/elevator_bubble_controller.gd" id="1_35u8w"]
+[ext_resource type="Texture2D" uid="uid://l3yxfg561rhg" path="res://bubbles/elevatorbubblevector.png" id="2_pb35t"]
+
+[node name="ElevatorBubble" type="AnimatableBody2D"]
+collision_layer = 2
+collision_mask = 11
+sync_to_physics = false
+script = ExtResource("1_35u8w")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(75, 0, 50, 50, -50, 50, -75, 0, -50, -50, 50, -50)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_pb35t")

@@ -80,10 +80,10 @@ func handle_horizontal_motion():
 
 func _on_set_player_position(pos: Vector2):
 	global_position = pos
+	velocity = Vector2()
 
 func boundary_collision():
 	SignalBus.send_player_to_start.emit()
-	
 	
 func handle_bubble_controls(delta: float):
 	var direction = Input.get_axis("ui_left", "ui_right")

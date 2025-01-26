@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://n3mjbve1seup" path="res://level_utils/BubbleSources.tscn" id="8_t41t1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjrkm"]
-size = Vector2(24, 999)
+size = Vector2(24, 1265.25)
 
 [node name="GameScene" type="Node2D"]
 
@@ -19,11 +19,11 @@ size = Vector2(24, 999)
 position = Vector2(238, 773)
 
 [node name="UpperBound" parent="." instance=ExtResource("2_j7b5e")]
-position = Vector2(800, -110)
+position = Vector2(800, -211)
 scale = Vector2(40, 1)
 
 [node name="LowerBound" parent="." instance=ExtResource("2_j7b5e")]
-position = Vector2(800, 955)
+position = Vector2(757, 1067)
 scale = Vector2(40, 1)
 
 [node name="LeftWall" type="StaticBody2D" parent="."]
@@ -32,7 +32,7 @@ collision_layer = 4
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
-position = Vector2(-2, 423.5)
+position = Vector2(-2, 417.75)
 shape = SubResource("RectangleShape2D_cjrkm")
 
 [node name="RightWall" type="StaticBody2D" parent="."]
@@ -41,7 +41,7 @@ collision_layer = 4
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
-position = Vector2(-2, 423.5)
+position = Vector2(-2, 407.375)
 shape = SubResource("RectangleShape2D_cjrkm")
 
 [node name="EmptyLevel" parent="." instance=ExtResource("3_l4rf8")]
