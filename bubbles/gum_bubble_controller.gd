@@ -57,11 +57,14 @@ func set_pop_timer():
 		true,
 	).timeout.connect(pop)
 
-func pop():
+func pop(request_childred_jump: bool = true):
 	SignalBus.bubble_pop.emit(global_position)
-	for child in get_children():
-		if child.has_method("jump_off_bubble"):
-			child.jump_off_bubble()
+	
+	if request_childred_jump:
+		for child in get_children():
+			if child.has_method("jump_off_bubble"):
+				child.jump_off_bubble()
+	
 	queue_free()
 	print("gum bubble has popped")
 

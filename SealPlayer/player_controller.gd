@@ -13,7 +13,6 @@ var desired_animation = StringName("Idle")
 
 func _ready():
 	SignalBus.player_win.connect(_on_player_win)
-	SignalBus.send_player_to_start.connect(_on_send_player_to_start)
 	SignalBus.set_player_position.connect(_on_set_player_position)
 	SignalBus.despawn_player.connect(_on_despawn_player)
 	
@@ -129,27 +128,17 @@ func stick_to_bubble(bubble: Node2D):
 	if gum_bubble != null:
 		return
 	gum_bubble = bubble
-	#set_collision_mask_value(2, false) # so seal doesn't collide with other bubbles
+	call_deferred("reparent", gum_bubble, true)
 	
-	var pos = global_position
-	var size = global_scale
-	self.get_parent().remove_child(self)
-	gum_bubble.add_child(self)
-	global_position = pos
-	global_scale = size
+	#reparent(gum_bubble, true) # keep global transform
 	
 func rotate_bubble(direction: float, delta: float):
 	gum_bubble.rotate(direction * delta * Constants.GUM_BUBBLE_ROTATION_SPEED)
 	
 func jump_off_bubble():
-	
-	var pos = global_position
-	var size = global_scale
 	var contents_node = get_tree().root.find_child("GameContents", true, false)
-	gum_bubble.remove_child(self)
-	contents_node.add_child(self)
-	global_position = pos
-	global_scale = size
+	reparent(contents_node, true) # keep global transform
+	rotation = 0. # don't keep rotation
 	
 	# actually jump
 	SignalBus.seal_jump.emit()
@@ -157,24 +146,25 @@ func jump_off_bubble():
 		velocity.y = -Constants.PLAYER_FLOOR_JUMP_VELOCITY
 	else:
 		velocity.y = 0
-	time_since_last_jump_command = 0.
+	time_since_last_jump_command = Constants.PLAYER_JUMP_BUFFER_TIME + 1 # Ensure we don't do an immediate air-jump
 	has_air_jump = true
 	
-	
-	gum_bubble.pop()
+	gum_bubble.pop(false)
 	gum_bubble = null
 
 func _on_player_win():
 	in_level_end_dance = true
-	set_collision_mask_value(2, false) # Stop colliding with bubbles?
-
-func _on_send_player_to_start():
-	in_level_end_dance = false
-	in_end_dance = false
+	set_collision_mask_value(2, false) # Stop colliding with bubbles
 
 func _on_set_player_position(pos: Vector2):
 	global_position = pos
 	velocity = Vector2()
+	
+	# Reset all state values we might have altered
+	in_end_dance = false
+	in_level_end_dance = false
+	gum_bubble = null
+	set_collision_mask_value(2, true)
 
 func _on_despawn_player():
 	queue_free()
