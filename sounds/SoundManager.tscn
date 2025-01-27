@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cete1mf7seyyl"]
+
+[ext_resource type="Script" path="res://sounds/sound_manager.gd" id="1_1bm4o"]
+[ext_resource type="AudioStream" uid="uid://bqriext1dreca" path="res://sounds/Slow Stride Loop.ogg" id="1_ugem3"]
+[ext_resource type="AudioStream" uid="uid://w5qv7nkyvnsf" path="res://sounds/pop.ogg" id="2_y88ml"]
+[ext_resource type="Script" path="res://sounds/sound_fx.gd" id="3_da5ce"]
+
+[node name="SoundManager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_1bm4o")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ugem3")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="SoundFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_y88ml")
+bus = &"FX"
+script = ExtResource("3_da5ce")

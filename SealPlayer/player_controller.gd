@@ -15,6 +15,7 @@ func _ready():
 	SignalBus.player_win.connect(_on_player_win)
 	SignalBus.send_player_to_start.connect(_on_send_player_to_start)
 	SignalBus.set_player_position.connect(_on_set_player_position)
+	SignalBus.despawn_player.connect(_on_despawn_player)
 	
 func _process(delta: float):
 	
@@ -144,9 +145,9 @@ func jump_off_bubble():
 	
 	var pos = global_position
 	var size = global_scale
-	var root_node = get_tree().current_scene
+	var contents_node = get_tree().root.find_child("GameContents", true, false)
 	gum_bubble.remove_child(self)
-	root_node.add_child(self)
+	contents_node.add_child(self)
 	global_position = pos
 	global_scale = size
 	
@@ -165,6 +166,7 @@ func jump_off_bubble():
 
 func _on_player_win():
 	in_level_end_dance = true
+	set_collision_mask_value(2, false) # Stop colliding with bubbles?
 
 func _on_send_player_to_start():
 	in_level_end_dance = false
@@ -173,3 +175,6 @@ func _on_send_player_to_start():
 func _on_set_player_position(pos: Vector2):
 	global_position = pos
 	velocity = Vector2()
+
+func _on_despawn_player():
+	queue_free()

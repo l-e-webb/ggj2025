@@ -1,76 +1,70 @@
-[gd_scene load_steps=12 format=3 uid="uid://0fa8se7eu66v"]
+[gd_scene load_steps=9 format=3 uid="uid://0fa8se7eu66v"]
 
 [ext_resource type="Script" path="res://game_controller.gd" id="1_msits"]
 [ext_resource type="PackedScene" uid="uid://crqd4lxka1wnh" path="res://bubble_wand/BubbleWand.tscn" id="1_yoyv3"]
 [ext_resource type="PackedScene" uid="uid://do8lfintnp12a" path="res://level_utils/Boundary.tscn" id="2_j7b5e"]
-[ext_resource type="AudioStream" uid="uid://bqriext1dreca" path="res://sounds/Slow Stride Loop.ogg" id="3_gse3f"]
-[ext_resource type="AudioStream" uid="uid://w5qv7nkyvnsf" path="res://sounds/pop.ogg" id="5_6s3eo"]
-[ext_resource type="Script" path="res://sounds/sound_fx.gd" id="6_myxcv"]
+[ext_resource type="PackedScene" uid="uid://c3osiu15s78et" path="res://menu/PauseMenu.tscn" id="2_s6ari"]
 [ext_resource type="Texture2D" uid="uid://bawdnr7bqbli4" path="res://level_utils/eveningbackground.png" id="7_f62nu"]
 [ext_resource type="PackedScene" uid="uid://bsbdnfuopa0p0" path="res://SealPlayer/Player.tscn" id="8_jidye"]
 [ext_resource type="PackedScene" uid="uid://n3mjbve1seup" path="res://level_utils/BubbleSources.tscn" id="8_t41t1"]
-[ext_resource type="PackedScene" uid="uid://8wwlbnjxkjh" path="res://level_utils/LevelSelector.tscn" id="10_4k3tu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjrkm"]
 size = Vector2(24, 1265.25)
 
 [node name="GameScene" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_msits")
 level_order = ["EmptyLevel", "LevelColumn", "LevelTrustFall", "LevelThreeColumn", "LevelChimney", "LevelStairs"]
 
-[node name="BubbleWand" parent="." instance=ExtResource("1_yoyv3")]
+[node name="PauseMenu" parent="." instance=ExtResource("2_s6ari")]
+visible = false
+z_index = 10
+offset_right = 1600.0
+offset_bottom = 900.0
+
+[node name="GameContents" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="BubbleWand" parent="GameContents" instance=ExtResource("1_yoyv3")]
 z_index = 4
 position = Vector2(238, 773)
 
-[node name="UpperBound" parent="." instance=ExtResource("2_j7b5e")]
+[node name="UpperBound" parent="GameContents" instance=ExtResource("2_j7b5e")]
 position = Vector2(800, -211)
 scale = Vector2(40, 1)
 
-[node name="LowerBound" parent="." instance=ExtResource("2_j7b5e")]
+[node name="LowerBound" parent="GameContents" instance=ExtResource("2_j7b5e")]
 position = Vector2(757, 1067)
 scale = Vector2(40, 1)
 
-[node name="LeftWall" type="StaticBody2D" parent="."]
+[node name="LeftWall" type="StaticBody2D" parent="GameContents"]
 position = Vector2(-15, 0)
 collision_layer = 4
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameContents/LeftWall"]
 position = Vector2(-2, 417.75)
 shape = SubResource("RectangleShape2D_cjrkm")
 
-[node name="RightWall" type="StaticBody2D" parent="."]
+[node name="RightWall" type="StaticBody2D" parent="GameContents"]
 position = Vector2(1622, 0)
 collision_layer = 4
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameContents/RightWall"]
 position = Vector2(-2, 407.375)
 shape = SubResource("RectangleShape2D_cjrkm")
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_gse3f")
-autoplay = true
-bus = &"Music"
-parameters/looping = true
-
-[node name="SoundFX" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_6s3eo")
-bus = &"FX"
-script = ExtResource("6_myxcv")
-
-[node name="BackgroundImage" type="Sprite2D" parent="."]
+[node name="BackgroundImage" type="Sprite2D" parent="GameContents"]
 z_index = -1
 position = Vector2(809, 445)
 scale = Vector2(0.843058, 0.843058)
 texture = ExtResource("7_f62nu")
 
-[node name="Player" parent="." instance=ExtResource("8_jidye")]
+[node name="Player" parent="GameContents" instance=ExtResource("8_jidye")]
 position = Vector2(130, 586)
 
-[node name="BubbleSources" parent="." instance=ExtResource("8_t41t1")]
+[node name="BubbleSources" parent="GameContents" instance=ExtResource("8_t41t1")]
 z_index = 3
 position = Vector2(87, 714)
 scale = Vector2(0.204401, 0.199584)
-
-[node name="LevelSelector" parent="." instance=ExtResource("10_4k3tu")]

@@ -51,7 +51,7 @@ func set_y(y: float):
 func set_pop_timer():
 	get_tree().create_timer(
 		Constants.MAX_BUBBLE_DURATION,
-		true,
+		false,
 		true,
 	).timeout.connect(pop)
 

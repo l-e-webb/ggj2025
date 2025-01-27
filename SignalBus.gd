@@ -1,9 +1,16 @@
 extends Node
 
 signal player_win()
-signal set_player_position(pos: Vector2)
+signal despawn_player()
+signal spawn_player_at(pos: Vector2)
 signal send_player_to_start()
+signal set_player_position(pos: Vector2)
 signal bubble_pop(pos: Vector2)
 signal seal_jump()
 signal bubble_type_selected(bubble_type_index)
-signal load_level(level_name: String)
+signal load_level(index: int)
+signal pause_game()
+signal unpause_game()
+signal set_music_is_on(is_on: bool)
+signal set_sfx_is_on(is_on: bool)
+signal return_to_main()

@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://2pjpbsf8djxs"]
 
-[ext_resource type="Texture2D" uid="uid://dbxvlr010bm3b" path="res://menu_assets/menubgd.png" id="1_8nmvo"]
-[ext_resource type="Script" path="res://mainmenu.gd" id="1_fhabf"]
-[ext_resource type="Texture2D" uid="uid://de3vlptom8wjp" path="res://menu_assets/sealestial.png" id="2_0k67t"]
-[ext_resource type="Texture2D" uid="uid://c8itrgpgbdy2s" path="res://menu_assets/play_button.png" id="4_4qg6p"]
-[ext_resource type="Texture2D" uid="uid://btqq3pyulrt8p" path="res://menu_assets/credits_button.png" id="5_f7caf"]
-[ext_resource type="Texture2D" uid="uid://b6qc2uqcuojde" path="res://menu_assets/thank_you_decal.png" id="6_d8sl5"]
-[ext_resource type="Texture2D" uid="uid://c3tac20rsebp" path="res://menu_assets/opening_img.png" id="7_mwsmm"]
+[ext_resource type="Texture2D" uid="uid://dbxvlr010bm3b" path="res://menu/menubgd.png" id="1_8nmvo"]
+[ext_resource type="Script" path="res://menu/mainmenu.gd" id="1_fhabf"]
+[ext_resource type="Texture2D" uid="uid://de3vlptom8wjp" path="res://menu/sealestial.png" id="2_0k67t"]
+[ext_resource type="Texture2D" uid="uid://c8itrgpgbdy2s" path="res://menu/play_button.png" id="4_4qg6p"]
+[ext_resource type="Texture2D" uid="uid://btqq3pyulrt8p" path="res://menu/credits_button.png" id="5_f7caf"]
+[ext_resource type="Texture2D" uid="uid://b6qc2uqcuojde" path="res://menu/thank_you_decal.png" id="6_d8sl5"]
+[ext_resource type="Texture2D" uid="uid://c3tac20rsebp" path="res://menu/opening_img.png" id="7_mwsmm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg5jn"]
 bg_color = Color(0, 0, 0, 1)

@@ -64,7 +64,7 @@ func release_bubble():
 	print("release_bubble_pre_cooldown: " + str(can_bubble))
 	cooldown()
 	
-	get_tree().root.add_child(bubble)
+	get_tree().root.find_child("GameContents", true, false).add_child(bubble)
 	bubble.global_position = bubble_global_pos
 	bubble.begin_floating()
 	bubble = null
@@ -73,7 +73,7 @@ func cooldown():
 	print("cooldown start: " + str(can_bubble))
 	get_tree().create_timer(
 		Constants.BUBBLE_WAND_COOLDOWN,
-		true,
+		false,
 		true,
 	).timeout.connect(reload)
 	

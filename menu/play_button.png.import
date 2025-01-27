@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de3vlptom8wjp"
-path="res://.godot/imported/sealestial.png-dc421ca7c61ec4c84002453362d0fa65.ctex"
+uid="uid://c8itrgpgbdy2s"
+path="res://.godot/imported/play_button.png-2aa65809c06a25baed134b530e0c5a5a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menu_assets/sealestial.png"
-dest_files=["res://.godot/imported/sealestial.png-dc421ca7c61ec4c84002453362d0fa65.ctex"]
+source_file="res://menu/play_button.png"
+dest_files=["res://.godot/imported/play_button.png-2aa65809c06a25baed134b530e0c5a5a.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6qc2uqcuojde"
-path="res://.godot/imported/thank_you_decal.png-9ca1d879bb4022cb0d071dcf18253ba3.ctex"
+uid="uid://c3tac20rsebp"
+path="res://.godot/imported/opening_img.png-787314db9c503dce58f82fa0cea6bdde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menu_assets/thank_you_decal.png"
-dest_files=["res://.godot/imported/thank_you_decal.png-9ca1d879bb4022cb0d071dcf18253ba3.ctex"]
+source_file="res://menu/opening_img.png"
+dest_files=["res://.godot/imported/opening_img.png-787314db9c503dce58f82fa0cea6bdde.ctex"]
 
 [params]
 

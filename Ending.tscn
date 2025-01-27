@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7otu7agnhroa"]
 
-[ext_resource type="Texture2D" uid="uid://da71nare6n43p" path="res://menu_assets/backgroundend.png" id="1_81di6"]
+[ext_resource type="Texture2D" uid="uid://da71nare6n43p" path="res://menu/backgroundend.png" id="1_81di6"]
 [ext_resource type="Script" path="res://ending_controller.gd" id="1_yo6jj"]
 [ext_resource type="PackedScene" uid="uid://bsbdnfuopa0p0" path="res://SealPlayer/Player.tscn" id="2_0362f"]
 
