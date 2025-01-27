@@ -2,7 +2,7 @@ extends Node
 
 signal player_win()
 signal despawn_player()
-signal spawn_player_at(pos: Vector2)
+signal player_die()
 signal send_player_to_start()
 signal set_player_position(pos: Vector2)
 signal bubble_pop(pos: Vector2)

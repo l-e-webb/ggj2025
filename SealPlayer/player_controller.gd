@@ -78,7 +78,7 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision.get_depth() > 12.5:
-			SignalBus.send_player_to_start.emit()
+			SignalBus.player_die.emit()
 		
 
 
@@ -115,7 +115,7 @@ func handle_horizontal_motion():
 		velocity.x = move_toward(velocity.x, 0, Constants.PLAYER_HORIZONTAL_SPEED)
 
 func boundary_collision():
-	SignalBus.send_player_to_start.emit()
+	SignalBus.player_die.emit()
 	
 func handle_bubble_controls(delta: float):
 	var direction = Input.get_axis("ui_left", "ui_right")
@@ -130,25 +130,21 @@ func stick_to_bubble(bubble: Node2D):
 	gum_bubble = bubble
 	call_deferred("reparent", gum_bubble, true)
 	
-	#reparent(gum_bubble, true) # keep global transform
-	
 func rotate_bubble(direction: float, delta: float):
 	gum_bubble.rotate(direction * delta * Constants.GUM_BUBBLE_ROTATION_SPEED)
 	
 func jump_off_bubble():
-	var contents_node = get_tree().root.find_child("GameContents", true, false)
-	reparent(contents_node, true) # keep global transform
-	rotation = 0. # don't keep rotation
+	reparent_to_game()
 	
 	# actually jump
 	SignalBus.seal_jump.emit()
-	if self.global_position.y <= gum_bubble.global_position.y + 50:
+	if global_position.y <= gum_bubble.global_position.y + 50:
 		velocity.y = -Constants.PLAYER_FLOOR_JUMP_VELOCITY
 	else:
 		velocity.y = 0
 	time_since_last_jump_command = Constants.PLAYER_JUMP_BUFFER_TIME + 1 # Ensure we don't do an immediate air-jump
 	has_air_jump = true
-	
+
 	gum_bubble.pop(false)
 	gum_bubble = null
 
@@ -168,3 +164,8 @@ func _on_set_player_position(pos: Vector2):
 
 func _on_despawn_player():
 	queue_free()
+
+func reparent_to_game():
+	var contents_node = get_tree().root.find_child("GameContents", true, false)
+	reparent(contents_node, true) # keep global transform
+	rotation = 0. # don't keep rotation

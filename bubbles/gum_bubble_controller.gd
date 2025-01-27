@@ -5,6 +5,7 @@ func _ready() -> void:
 	$Area2D.body_entered.connect(on_bubble_stick)
 	$Area2D.body_exited.connect(on_bubble_unstick)
 	$Area2D.monitoring = false
+	SignalBus.load_level.connect(func(_index): pop())
 
 func begin_floating():
 	set_pop_timer()
@@ -72,8 +73,8 @@ func boundary_collision():
 	pop()
 
 func on_bubble_stick(body: Node2D):
-	print("bubble is sticking")
 	if body.has_method("stick_to_bubble"):
+		print("sticking to bubble")
 		body.stick_to_bubble(self)
 	
 	

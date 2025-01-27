@@ -14,6 +14,7 @@ func _ready():
 	SignalBus.player_win.connect(_on_win)
 	SignalBus.pause_game.connect(_on_pause)
 	SignalBus.unpause_game.connect(_on_unpause)
+	SignalBus.player_die.connect(_on_player_die)
 	if !level_order.is_empty():
 		SignalBus.load_level.emit(0)
 	
@@ -28,17 +29,29 @@ func load_level(index: int):
 	current_level = load(full_name).instantiate()
 	$GameContents.add_child(current_level)
 	check_update_background()
+	spawn_player()
+
+func check_update_background():
+	if current_level_index > level_order.size() / 2:
+		$GameContents/BackgroundImage.texture = night_bg
+	else:
+		$GameContents/BackgroundImage.texture = eve_bg
+
+func spawn_player():
 	var player = load("res://SealPlayer/Player.tscn").instantiate()
 	$GameContents.add_child(player)
 	SignalBus.send_player_to_start.emit()
-	
+
+func _on_player_die():
+	SignalBus.despawn_player.emit()
+	spawn_player()
 
 func _on_win():
 	if awaiting_level_change:
 		return
 	
 	awaiting_level_change = true
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(2.2).timeout
 	
 	SignalBus.despawn_player.emit()
 	
@@ -51,11 +64,7 @@ func _on_win():
 		SignalBus.load_level.emit(current_level_index)
 	awaiting_level_change = false
 
-func check_update_background():
-	if current_level_index > level_order.size() / 2:
-		$GameContents/BackgroundImage.texture = night_bg
-	else:
-		$GameContents/BackgroundImage.texture = eve_bg
+
 
 func _on_pause():
 	get_tree().paused = true

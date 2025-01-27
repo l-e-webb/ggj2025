@@ -1,5 +1,8 @@
 extends AnimatableBody2D
 
+func _ready():
+	SignalBus.load_level.connect(func(_index): pop())
+
 func begin_floating():
 	set_pop_timer()
 	
