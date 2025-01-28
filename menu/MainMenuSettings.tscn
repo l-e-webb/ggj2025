@@ -39,6 +39,29 @@ theme_override_font_sizes/font_size = 24
 text = "Menu"
 horizontal_alignment = 1
 
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="LevelSelect" type="MenuButton" parent="CenterContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Select Level"
+flat = false
+item_count = 6
+popup/item_0/text = "1. Good Start"
+popup/item_1/text = "2. Column"
+popup/item_1/id = 1
+popup/item_2/text = "3. Trust Fall"
+popup/item_2/id = 2
+popup/item_3/text = "4. Three Columns"
+popup/item_3/id = 3
+popup/item_4/text = "5. Chimney"
+popup/item_4/id = 4
+popup/item_5/text = "6. Stairs"
+popup/item_5/id = 5
+
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
