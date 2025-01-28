@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://2pjpbsf8djxs"]
+[gd_scene load_steps=12 format=3 uid="uid://2pjpbsf8djxs"]
 
 [ext_resource type="Texture2D" uid="uid://dbxvlr010bm3b" path="res://menu/menubgd.png" id="1_8nmvo"]
 [ext_resource type="Script" path="res://menu/mainmenu.gd" id="1_fhabf"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://btqq3pyulrt8p" path="res://menu/credits_button.png" id="5_f7caf"]
 [ext_resource type="Texture2D" uid="uid://b6qc2uqcuojde" path="res://menu/thank_you_decal.png" id="6_d8sl5"]
 [ext_resource type="Texture2D" uid="uid://c3tac20rsebp" path="res://menu/opening_img.png" id="7_mwsmm"]
+[ext_resource type="PackedScene" uid="uid://buomdiek44waw" path="res://menu/MainMenuSettings.tscn" id="8_m2yfa"]
+[ext_resource type="Texture2D" uid="uid://cx10xvpqr51s3" path="res://menu/settings.png" id="9_8lohs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg5jn"]
 bg_color = Color(0, 0, 0, 1)
@@ -19,6 +21,7 @@ content_margin_bottom = 10.0
 bg_color = Color(0, 0, 0, 0.556863)
 
 [node name="mainmenu" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_fhabf")
 metadata/_edit_horizontal_guides_ = [0.0, 898.0, 448.0]
 metadata/_edit_vertical_guides_ = [1600.0, 0.0, 799.0]
@@ -32,6 +35,17 @@ texture = ExtResource("1_8nmvo")
 position = Vector2(799, 268)
 scale = Vector2(0.145429, 0.147274)
 texture = ExtResource("2_0k67t")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+self_modulate = Color(1, 1, 1, 0.768627)
+custom_minimum_size = Vector2(32, 32)
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("9_8lohs")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="PlayButton" type="TextureButton" parent="."]
 offset_left = 653.0
@@ -50,12 +64,18 @@ scale = Vector2(0.0892602, 0.0892602)
 texture_normal = ExtResource("5_f7caf")
 
 [node name="CreditsPanel" type="Panel" parent="."]
-visible = false
 self_modulate = Color(0, 0, 0, 1)
-offset_left = 468.0
-offset_top = 158.0
-offset_right = 1135.0
-offset_bottom = 759.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 400.0
+offset_top = 125.0
+offset_right = 1200.0
+offset_bottom = 775.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="CenterContainer" parent="CreditsPanel"]
 layout_mode = 1
@@ -66,27 +86,28 @@ offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CreditsPanel/MarginContainer"]
+[node name="RichTextLabel" type="Label" parent="CreditsPanel/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/font_size = 30
 text = "Esther Fraser - Programmer
 Louis Webb - Programmer
 Keegan O'Toole - Artist, Animator
 Kate Betman - Animator
 Alyson MacDonald - Graphic Artist
 Roshan Kapur - Programmer &
-Good Vibes"
-fit_content = true
-autowrap_mode = 0
+Good Vibes
+Music by isaiah658
+(https://opengameart.org/content/slow-stride)"
+horizontal_alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="CreditsPanel"]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 397.0
-offset_right = 5040.0
-offset_bottom = 1907.0
+offset_left = 106.0
+offset_top = 453.0
+offset_right = 5106.0
+offset_bottom = 1963.0
 scale = Vector2(0.117562, 0.117562)
 texture_normal = ExtResource("6_d8sl5")
 
@@ -121,6 +142,12 @@ text = "“Wa gigggph d’egg mibpth (sneezes) mgnngph.”
 fit_content = true
 autowrap_mode = 0
 
+[node name="MainMenuSettings" parent="." instance=ExtResource("8_m2yfa")]
+visible = false
+offset_right = 1600.0
+offset_bottom = 900.0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CreditsPanel/TextureButton" to="." method="_on_thank_you_button_pressed"]

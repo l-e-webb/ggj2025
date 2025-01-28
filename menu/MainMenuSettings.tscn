@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3osiu15s78et"]
+[gd_scene load_steps=5 format=3 uid="uid://buomdiek44waw"]
 
-[ext_resource type="Texture2D" uid="uid://b0d02h74wvjdd" path="res://menu/mute_empty.png" id="1_11nuj"]
-[ext_resource type="Script" path="res://menu/pause_menu_controller.gd" id="1_b28cv"]
-[ext_resource type="Texture2D" uid="uid://7r7mggxt1o2v" path="res://menu/sound_filled.png" id="2_11j7p"]
+[ext_resource type="Script" path="res://menu/pause_menu_controller.gd" id="1_jr3g0"]
+[ext_resource type="Texture2D" uid="uid://b0d02h74wvjdd" path="res://menu/mute_empty.png" id="2_c4p2h"]
+[ext_resource type="Texture2D" uid="uid://7r7mggxt1o2v" path="res://menu/sound_filled.png" id="3_thbx7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjnsk"]
 content_margin_left = 16.0
@@ -11,7 +11,7 @@ content_margin_right = 16.0
 content_margin_bottom = 16.0
 bg_color = Color(0.20552, 0.1296, 0.48, 1)
 
-[node name="PauseMenu" type="PanelContainer"]
+[node name="MainMenuSettings" type="PanelContainer"]
 process_mode = 2
 self_modulate = Color(1, 1, 1, 0.509804)
 anchors_preset = 15
@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_b28cv")
+script = ExtResource("1_jr3g0")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
@@ -38,27 +38,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Menu"
 horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="LevelSelect" type="MenuButton" parent="CenterContainer/PanelContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Select Level"
-flat = false
-item_count = 6
-popup/item_0/text = "1. Good Start"
-popup/item_1/text = "2. Column"
-popup/item_1/id = 1
-popup/item_2/text = "3. Trust Fall"
-popup/item_2/id = 2
-popup/item_3/text = "4. Three Columns"
-popup/item_3/id = 3
-popup/item_4/text = "5. Chimney"
-popup/item_4/id = 4
-popup/item_5/text = "6. Stairs"
-popup/item_5/id = 5
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -84,8 +63,8 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 toggle_mode = true
 button_pressed = true
-texture_normal = ExtResource("1_11nuj")
-texture_pressed = ExtResource("2_11j7p")
+texture_normal = ExtResource("2_c4p2h")
+texture_pressed = ExtResource("3_thbx7")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -104,17 +83,13 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 toggle_mode = true
 button_pressed = true
-texture_normal = ExtResource("1_11nuj")
-texture_pressed = ExtResource("2_11j7p")
+texture_normal = ExtResource("2_c4p2h")
+texture_pressed = ExtResource("3_thbx7")
 ignore_texture_size = true
 stretch_mode = 5
 
 [node name="HSeparator3" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="ReturnToMain" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "Exit to Main Menu"
 
 [node name="Quit" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -127,6 +102,5 @@ text = "Resume"
 
 [connection signal="toggled" from="CenterContainer/PanelContainer/VBoxContainer/MusicGroup/MusicButton" to="." method="_on_music_button_toggled"]
 [connection signal="toggled" from="CenterContainer/PanelContainer/VBoxContainer/SFXGroup/SfxButton" to="." method="_on_sfx_button_toggled"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/ReturnToMain" to="." method="_on_return_to_main_button_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_game_button_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_button_pressed"]

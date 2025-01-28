@@ -15,13 +15,16 @@ func _ready():
 	SignalBus.pause_game.connect(_on_pause)
 	SignalBus.unpause_game.connect(_on_unpause)
 	SignalBus.player_die.connect(_on_player_die)
+	SignalBus.return_to_main.connect(_on_return_to_main)
 	if !level_order.is_empty():
 		SignalBus.load_level.emit(0)
 	
 
 func load_level(index: int):
+	# Remove existing level and player, if present
 	if current_level != null:
 		current_level.queue_free()
+	SignalBus.despawn_player.emit()
 	
 	current_level_index = index
 	var name = level_order[index]
@@ -29,7 +32,7 @@ func load_level(index: int):
 	current_level = load(full_name).instantiate()
 	$GameContents.add_child(current_level)
 	check_update_background()
-	spawn_player()
+	call_deferred("spawn_player")
 
 func check_update_background():
 	if current_level_index > level_order.size() / 2:
@@ -44,7 +47,7 @@ func spawn_player():
 
 func _on_player_die():
 	SignalBus.despawn_player.emit()
-	spawn_player()
+	call_deferred("spawn_player")
 
 func _on_win():
 	if awaiting_level_change:
@@ -73,6 +76,10 @@ func _on_pause():
 func _on_unpause():
 	get_tree().paused = false
 	$PauseMenu.visible = false
+
+func _on_return_to_main():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://menu/mainmenu.tscn")
 
 func _input(event: InputEvent) -> void:
 	if !awaiting_level_change and event.is_action_pressed("pause"):

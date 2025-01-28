@@ -4,10 +4,15 @@ extends PanelContainer
 func _ready() -> void:
 	call_deferred("setup_popup_observer")
 	%MusicButton.set_pressed_no_signal(!AudioServer.is_bus_mute(0))
-	%SfxButton.set_pressed_no_signal(!AudioServer.is_bus_mute(1)) 
+	%SfxButton.set_pressed_no_signal(!AudioServer.is_bus_mute(1))
+	if OS.get_name() == "Web":
+		%Quit.visible = false
 
 func setup_popup_observer():
 	var level_select: MenuButton = %LevelSelect
+	if level_select == null:
+		return
+	
 	var popup_menu = level_select.get_popup()
 	popup_menu.index_pressed.connect(_on_level_menu_item_selected)
 
@@ -28,3 +33,6 @@ func _on_resume_button_pressed():
 
 func _on_return_to_main_button_pressed():
 	SignalBus.return_to_main.emit()
+
+func _on_quit_game_button_pressed():
+	get_tree().quit()

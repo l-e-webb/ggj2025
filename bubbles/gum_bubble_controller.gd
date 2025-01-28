@@ -70,7 +70,7 @@ func pop(request_childred_jump: bool = true):
 	print("gum bubble has popped")
 
 func boundary_collision():
-	pop()
+	call_deferred("pop")
 
 func on_bubble_stick(body: Node2D):
 	if body.has_method("stick_to_bubble"):

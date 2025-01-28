@@ -195,9 +195,6 @@ animations = [{
 "texture": ExtResource("7_wlues")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_wlues")
-}, {
-"duration": 1.0,
 "texture": ExtResource("2_vyhyj")
 }],
 "loop": true,
@@ -220,6 +217,5 @@ z_index = 5
 position = Vector2(-1, -18)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_cvq05")
-animation = &"DanceLevelEnd"
+animation = &"Run"
 autoplay = "Run"
-frame_progress = 0.432292
