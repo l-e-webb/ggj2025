@@ -1,10 +1,11 @@
-extends AnimatableBody2D
+extends BubbleBase
 
 func _ready():
-	SignalBus.load_level.connect(func(_index): pop())
+	bubble_type = "PlainBubble"
+	super._ready()
 
-func begin_floating():
-	set_pop_timer()
+func on_release():
+	super.on_release()
 	
 	var rise_tween = get_tree().create_tween()
 	rise_tween.bind_node(self)

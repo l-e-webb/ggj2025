@@ -1,10 +1,11 @@
-extends AnimatableBody2D
+extends BubbleBase
 
-func _ready():
-	SignalBus.load_level.connect(func(_index): pop())
+func _ready() -> void:
+	bubble_type = "ElevatorBubble"
+	super._ready()
 
-func begin_floating():
-	set_pop_timer()
+func on_release():
+	super.on_release()
 	
 	var rise_tween = get_tree().create_tween()
 	rise_tween.bind_node(self)
@@ -44,26 +45,3 @@ func begin_floating():
 		left,
 		Constants.ELEVATOR_BUBBLE_DRIFT_DURATION
 	)
-
-func set_x(x: float):
-	position.x = x
-
-func set_y(y: float):
-	position.y = y
-
-func set_pop_timer():
-	get_tree().create_timer(
-		Constants.MAX_BUBBLE_DURATION,
-		false,
-		true,
-	).timeout.connect(pop)
-
-func pop():
-	SignalBus.bubble_pop.emit(global_position)
-	queue_free()
-	print("Elevator bubble has popped")
-
-func boundary_collision():
-	pop()
-
-	

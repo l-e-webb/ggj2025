@@ -7,7 +7,7 @@
 radius = 93.1933
 
 [node name="GumBubble" type="AnimatableBody2D"]
-collision_layer = 2
+collision_layer = 32
 collision_mask = 11
 sync_to_physics = false
 script = ExtResource("1_e3ih1")

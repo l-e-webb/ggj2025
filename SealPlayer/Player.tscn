@@ -203,7 +203,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 30
+collision_mask = 62
 platform_floor_layers = 4294901766
 script = ExtResource("1_at7ki")
 

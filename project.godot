@@ -80,6 +80,7 @@ pause={
 2d_physics/layer_3="platform"
 2d_physics/layer_4="bounds"
 2d_physics/layer_5="goal"
+2d_physics/layer_6="bubble_pre_launch"
 
 [rendering]
 

@@ -1,14 +1,15 @@
-extends AnimatableBody2D
+extends BubbleBase
 
 func _ready() -> void:
+	bubble_type = "GumBubble"
 	# handle collisions with player
 	$Area2D.body_entered.connect(on_bubble_stick)
 	$Area2D.body_exited.connect(on_bubble_unstick)
 	$Area2D.monitoring = false
-	SignalBus.load_level.connect(func(_index): pop())
+	super._ready()
 
-func begin_floating():
-	set_pop_timer()
+func on_release():
+	super.on_release()
 	$Area2D.monitoring = true
 	
 	var rise_tween = get_tree().create_tween()
@@ -41,22 +42,6 @@ func begin_floating():
 		left,
 		Constants.GUM_BUBBLE_DRIFT_DURATION
 	)
-	
-	# handle collisions with player
-	#$Area2D.body_entered.connect(on_bubble_stick)
-
-func set_x(x: float):
-	position.x = x
-
-func set_y(y: float):
-	position.y = y
-
-func set_pop_timer():
-	get_tree().create_timer(
-		Constants.MAX_BUBBLE_DURATION,
-		false,
-		true,
-	).timeout.connect(pop)
 
 func pop(request_childred_jump: bool = true):
 	SignalBus.bubble_pop.emit(global_position)

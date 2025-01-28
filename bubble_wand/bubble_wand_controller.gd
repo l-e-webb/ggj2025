@@ -66,7 +66,7 @@ func release_bubble():
 	
 	get_tree().root.find_child("GameContents", true, false).add_child(bubble)
 	bubble.global_position = bubble_global_pos
-	bubble.begin_floating()
+	bubble.on_release()
 	bubble = null
 	
 func cooldown():
